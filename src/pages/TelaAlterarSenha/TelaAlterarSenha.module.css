@@ -28,17 +28,8 @@
 
 /* --- LOGO ATUALIZADO --- */
 .logoWrapper {
-  /* Adiciona o espaço que o subtítulo antigo ocupava */
   margin-bottom: 2.5rem;
-
-  /* O HeroLogo é muito grande, vamos escalá-lo 
-     para caber melhor nesta tela focada */
   transform: scale(0.8);
-}
-
-/* --- FORMULÁRIO --- */
-.formWrapper {
-  /* O wrapper já é centralizado */
 }
 
 .title {
@@ -173,4 +164,39 @@
   height: 20px;
   accent-color: #E57734;
   /* Cor laranja quando marcado */
+}
+
+/* estilos pro step 3 */
+
+.pillContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #FDF0D5;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.pill {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #FFF;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.pillOrange { background-color: #E57734; }
+.pillPurple { background-color: #8E44AD; }
+.pillGray   { background-color: #7F8C8D; }
+.pillTeal   { background-color: #01757A; }
+
+.infoText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
