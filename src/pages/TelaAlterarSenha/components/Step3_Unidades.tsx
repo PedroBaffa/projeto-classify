@@ -2,13 +2,14 @@ import React from 'react';
 
 interface Step3Props {
   styles: any;
+  onContinue: () => void; // Função chamada ao continuar para o próximo passo
 }
 
-export function Step3_Unidades({ styles }: Step3Props) {
+export function Step3_Unidades({ styles, onContinue}: Step3Props) {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Cadastro de preferências concluído!'); 
+    onContinue();
   };
 
   return (
