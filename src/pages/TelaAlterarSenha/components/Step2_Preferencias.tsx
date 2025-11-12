@@ -1,25 +1,22 @@
-// src/pages/TelaAlterarSenha/components/Step2_Preferencias.tsx
 import React from 'react';
 
 interface Step2Props {
   styles: any;
+  onContinue: () => void;
 }
 
-export function Step2_Preferencias({ styles }: Step2Props) {
-  
+export function Step2_Preferencias({ styles, onContinue }: Step2Props) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: No futuro, este botão levaria ao Dashboard
-    alert('Preferências salvas! Redirecionando...'); 
+    onContinue(); 
   };
 
-  return (
+    return (
     <div className={styles.formWrapper}>
       <h1 className={styles.title}>Qual sua preferência para horários?</h1>
       
       <form className={styles.form} onSubmit={handleSubmit}>
         
-        {/* Grupo de Checkboxes */}
         <div className={styles.checkboxGroup}>
           <label className={styles.checkboxLabel}>
             <input type="checkbox" className={styles.formCheckbox} />
