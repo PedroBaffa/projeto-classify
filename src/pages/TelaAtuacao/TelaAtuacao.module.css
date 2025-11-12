@@ -1,0 +1,69 @@
+/* src/pages/TelaAtuacao/TelaAtuacao.module.css */
+
+/* A classe .mainContent foi movida para Layout.module.css */
+/* Este arquivo agora só contém estilos *desta página* */
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  color: #333;
+}
+
+.introParagraph {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+
+  color: #333;
+}
+
+.contentGrid {
+  display: grid;
+
+  /* Em telas maiores, 2 colunas */
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem; /* Espaço entre os cards */
+}
+
+.card {
+  /* Efeito "vidro" (Tema Claro) */
+  background-color: rgba(240, 240, 240, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  padding: 1.5rem;
+  border-radius: 8px;
+
+  color: #333;
+}
+
+.card h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.card p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Media Query para Responsividade */
+@media (max-width: 768px) {
+  .contentGrid {
+    /* Em telas de telemóvel, 1 coluna */
+    grid-template-columns: 1fr;
+  }
+}

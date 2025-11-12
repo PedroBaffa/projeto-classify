@@ -1,0 +1,12 @@
+/* src/styles/global.css */
+
+/* 1. ADICIONE ISTO NO TOPO: Importa a fonte Poppins do Google */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+/* 2. (Opcional, mas recomendado) Diga ao site para usar Poppins como padrão */
+body {
+  margin: 0; /* Remove margens padrão */
+  font-family: "Poppins", sans-serif;
+  background-color: #fff; /* Um tom de cinza escuro */
+  color: #333;
+}

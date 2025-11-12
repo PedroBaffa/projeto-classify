@@ -1,0 +1,57 @@
+.buttonBase {
+  align-items: center;
+  border-radius: 50px;
+  display: inline-flex;
+  gap: 10px;
+  height: 60px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 15px 20px;
+  position: relative;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+.buttonBase:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+  background-color: #e57734;
+}
+
+/* 1. Variante Nav (Verde) */
+.nav {
+  background-color: #01757a;
+}
+
+/* 2. Variante Primária (Laranja) */
+.primary {
+  background-color: #e57734;
+}
+
+/* ... (todo o seu CSS existente .buttonBase, .nav, .primary) ... */
+
+/* ESTE É O NOVO ESTILO PARA O BOTÃO SELECIONADO */
+.active {
+  /* Cor Laranja (a mesma do .primary) */
+  background-color: #e57734;
+
+  /* Borda Branca (como 'selecionado') */
+  border: 1px solid #ffffff;
+
+  /* (Opcional) Garante que a fonte seja branca */
+  color: #ffffff;
+}
+
+/* Ajuste o .nav para não ter borda, 
+   para que a borda do .active se destaque */
+.nav {
+  background-color: #01757a;
+  border: 1px solid transparent; /* Adicione isto */
+}

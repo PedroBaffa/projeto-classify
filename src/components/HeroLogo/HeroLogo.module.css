@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  height: 86px;
+  width: 86px;
+  object-fit: cover;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+}
+
+.subtitle {
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+} 
+
+
+/* --- Media Query para Desktops (Telas > 768px) --- */
+
+@media (min-width: 768px) {
+
+  .title {
+    font-size: 64px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+  }
+}

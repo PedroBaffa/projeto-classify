@@ -1,0 +1,115 @@
+/* src/components/Header/Header.module.css */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 22px;
+  box-sizing: border-box;
+  
+  /* --- MUDANÇAS AQUI --- */
+  
+  /* 1. Mude de 'relative' para 'sticky' */
+  position: sticky;
+  
+  /* 2. Diga para "colar" no topo da tela */
+  top: 0; 
+  
+  /* 3. Aumente o z-index para 10 
+     (para ficar na frente do mainContent (z-index: 1)) */
+  z-index: 10; 
+  
+  /* --- (O seu estilo de vidro continua o mesmo) --- */
+  background-color: rgba(240, 240, 240, 0.6); 
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  height: 70px;
+  width: 70px;
+  object-fit: cover;
+}
+
+.logoLink {
+  /* Remove qualquer decoração padrão de link */
+  text-decoration: none; 
+  line-height: 0; /* Ajuda a alinhar a imagem */
+}
+
+/* 1. ESTILO DO CONTAINER DOS LINKS (DESKTOP) */
+.navContainer {
+  display: flex;
+  gap: 55px; /* Espaçamento padrão para desktop */
+}
+
+/* 2. ESTILO DO ÍCONE HAMBÚRGUER (ESCONDIDO NO DESKTOP) */
+.hamburgerIcon {
+  display: none; /* Escondido por padrão (no desktop) */
+
+  /* Estilo básico do botão */
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #000; /* Cor do ícone */
+  cursor: pointer;
+}
+
+/* ========================================
+--- MEDIA QUERY (A MÁGICA ACONTECE AQUI) ---
+Quando a tela for 768px OU MENOR
+========================================
+*/
+@media (max-width: 768px) {
+  /* 1. Mostra o ícone hambúrguer (Isto não mudou) */
+  .hamburgerIcon {
+    display: block;
+  }
+
+  /* 2. O CONTAINER DO MENU (AGORA COM ESTILO DE VIDRO E ANIMAÇÃO) */
+  .navContainer {
+    /* Em vez de 'display: none', vamos usar 'display: flex' 
+       e controlar a visibilidade com opacidade */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    width: 200px;
+    z-index: 1000;
+    border-radius: 8px;
+    padding: 15px;
+
+    /* --- 1. EFEITO VIDRO (O QUE FALTAVA) --- */
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+    /* --- 2. ANIMAÇÃO (ESTADO INICIAL - ESCONDIDO) --- */
+
+    /* Começa invisível */
+    opacity: 0;
+    /* Começa "deslizando" 10px para cima */
+    transform: translateY(-10px);
+    /* Não pode ser clicado quando invisível */
+    visibility: hidden;
+    /* A velocidade da animação */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+
+  /* 3. CLASSE ATIVA (QUANDO O MENU ESTÁ ABERTO) */
+  .navAberto {
+    /* Torna visível */
+    opacity: 1;
+    /* Volta à posição normal */
+    transform: translateY(0);
+    /* Pode ser clicado */
+    visibility: visible;
+  }
+}
