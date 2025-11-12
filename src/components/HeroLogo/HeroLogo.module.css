@@ -31,10 +31,7 @@
   font-weight: 400;
   line-height: normal;
   margin: 0;
-}
-
-
-/* --- Media Query para Desktops (Telas > 768px) --- */
+} 
 
 @media (min-width: 768px) {
 

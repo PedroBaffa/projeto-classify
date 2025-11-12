@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './TelaAtuacao.module.css';
+import styles from './TelaAtuacao.module.css'; 
 
 export function TelaAtuacao() {
   return (
@@ -15,7 +15,7 @@ export function TelaAtuacao() {
       </p>
 
       <div className={styles.contentGrid}>
-
+        
         <div className={styles.card}>
           <h3>Escolas Públicas:</h3>
           <p>

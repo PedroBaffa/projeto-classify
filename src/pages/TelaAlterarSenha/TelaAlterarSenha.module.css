@@ -1,0 +1,135 @@
+/* src/pages/TelaAlterarSenha/TelaAlterarSenha.module.css */
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centraliza o conteúdo */
+  min-height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  padding: 2rem;
+  box-sizing: border-box;
+  position: relative; /* Para as barras no fundo */
+  overflow: hidden; /* Para as barras no fundo */
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: 450px; /* Limita a largura do formulário */
+  text-align: center;
+  z-index: 1; /* Fica na frente das barras */
+}
+
+/* --- LOGO ATUALIZADO --- */
+.logoWrapper {
+  /* Adiciona o espaço que o subtítulo antigo ocupava */
+  margin-bottom: 2.5rem;
+
+  /* O HeroLogo é muito grande, vamos escalá-lo 
+     para caber melhor nesta tela focada */
+  transform: scale(0.8);
+}
+
+/* --- FORMULÁRIO --- */
+.formWrapper {
+  /* O wrapper já é centralizado */
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #333;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #555;
+  margin: 0.5rem 0 2rem 0;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: left; /* Alinha os labels à esquerda */
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #333;
+}
+
+/* --- ESTILOS REUTILIZADOS DA TELA DE LOGIN --- */
+.formInput {
+  background-color: #fdf0d5; /* Cor Creme */
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+.formButton {
+  background-color: #e57734; /* Cor Laranja */
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.formButton:hover {
+  opacity: 0.9;
+}
+/* --- FIM DOS ESTILOS REUTILIZADOS --- */
+
+.constraintText {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  color: #e57734; /* Cor Laranja/Vermelha */
+  text-align: center;
+  margin: -1rem 0 1.5rem 0; /* Puxa para cima */
+}
+
+/* --- BARRAS NO FUNDO --- */
+.bottomBars {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  display: flex;
+  z-index: 0;
+}
+
+.barOrange {
+  height: 100%;
+  flex-basis: 70%;
+  background-color: #e57734;
+}
+
+.barTeal {
+  height: 100%;
+  flex-grow: 1; /* Ocupa o resto do espaço */
+  background-color: #01757a;
+}

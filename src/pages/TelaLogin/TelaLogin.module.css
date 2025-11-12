@@ -1,0 +1,254 @@
+/* src/pages/TelaLogin/TelaLogin.module.css */
+
+.loginPage {
+  display: grid;
+  /* 50% para cada coluna */
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh; /* Altura total da tela */
+  width: 100%;
+}
+
+/* --- PAINEL ESQUERDO (Logo) --- */
+.leftPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- PAINEL DIREITO (Formulário) --- */
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #01757a;
+  padding: 4rem;
+  color: #fff;
+}
+
+.heroWrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+/* --- O Formulário --- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espaço entre os inputs e o botão */
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Espaço entre o label e o input */
+}
+
+.inputGroup label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.formInput {
+  /* Cor "Creme" da imagem */
+  background-color: #fdf0d5;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* O botão de "Entrar" */
+.formButton {
+  /* Cor "Laranja" (a mesma do .primary do nosso Button) */
+  background-color: #e57734;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+
+  width: 100%; /* Botão 100% largo */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.formButton:hover {
+  opacity: 0.9;
+}
+
+/* --- Link de Cadastro --- */
+.signupLink {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.signupLink a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* --- Responsividade (Simples) --- */
+@media (max-width: 900px) {
+  .loginPage {
+    /* No telemóvel, uma coluna em cima da outra */
+    grid-template-columns: 1fr;
+  }
+
+  .leftPanel {
+    /* Escondemos o logo em telas muito pequenas 
+       ou damos menos altura */
+    padding: 2rem;
+  }
+
+  .rightPanel {
+    padding: 2rem;
+  }
+}
+
+/* --- COLE TODO ESTE BLOCO NO FINAL DO ARQUIVO --- */
+
+/* --- ANIMAÇÃO DE FUNDO --- */
+
+.fallingItemsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* Coloca ele atrás de tudo DENTRO do .leftPanel */
+  z-index: 0;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(110vh);
+    opacity: 0.6;
+  }
+}
+
+.item {
+  position: absolute;
+  top: -10%;
+  width: 50px;
+  height: 50px;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* --- A "ALEATORIEDADE" (CSS) --- */
+
+.item1 {
+  left: 10%;
+  animation-duration: 15s;
+  animation-delay: 0s;
+}
+.item2 {
+  left: 20%;
+  animation-duration: 10s;
+  animation-delay: 2s;
+}
+.item3 {
+  left: 30%;
+  animation-duration: 12s;
+  animation-delay: 5s;
+}
+.item4 {
+  left: 40%;
+  animation-duration: 8s;
+  animation-delay: 1s;
+}
+.item5 {
+  left: 50%;
+  animation-duration: 13s;
+  animation-delay: 3s;
+}
+.item6 {
+  left: 60%;
+  animation-duration: 10s;
+  animation-delay: 6s;
+}
+.item7 {
+  left: 70%;
+  animation-duration: 11s;
+  animation-delay: 4s;
+}
+.item8 {
+  left: 80%;
+  animation-duration: 9s;
+  animation-delay: 2s;
+}
+.item9 {
+  left: 85%;
+  animation-duration: 14s;
+  animation-delay: 7s;
+}
+.item10 {
+  left: 90%;
+  animation-duration: 10s;
+  animation-delay: 0s;
+}
+
+/* --- ESTILOS ADICIONAIS PARA TELA DE CADASTRO (INSTRUÇÕES) --- */
+
+.instrucoesCadastro {
+  /* Espaço entre o subtítulo e este bloco */
+  margin-bottom: 2rem;
+  /* Espaço entre este bloco e o botão "Continuar" */
+  flex-grow: 1;
+}
+
+.instrucoesTitulo {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.instrucoesTexto {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.instrucoesTexto strong {
+  font-weight: 700;
+  opacity: 1;
+}

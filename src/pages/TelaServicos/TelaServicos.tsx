@@ -1,21 +1,17 @@
-
-import styles from '../TelaAtuacao/TelaAtuacao.module.css';
+import styles from "../TelaAtuacao/TelaAtuacao.module.css";
 
 export function TelaServicos() {
   return (
     <main className={styles.mainContent}>
-
       <h1 className={styles.title}>Serviços</h1>
 
       <p className={styles.introParagraph}>
-        O <strong>Classify</strong> oferece uma gama de funcionalidades
-        voltadas à organização acadêmica e à otimização da alocação
-        docente. Confira os principais serviços oferecidos pela nossa
-        plataforma:
+        O <strong>Classify</strong> oferece uma gama de funcionalidades voltadas
+        à organização acadêmica e à otimização da alocação docente. Confira os
+        principais serviços oferecidos pela nossa plataforma:
       </p>
 
       <div className={styles.contentGrid}>
-
         <div className={styles.card}>
           <h3>Cadastro de Professores com Preferências:</h3>
           <p>
@@ -33,7 +29,6 @@ export function TelaServicos() {
             instituição.
           </p>
         </div>
-
       </div>
     </main>
   );

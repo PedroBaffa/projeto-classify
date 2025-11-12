@@ -22,8 +22,9 @@ export function Header() {
       </button>
 
       <div
-        className={`${styles.navContainer} ${menuAberto ? styles.navAberto : ""
-          }`}
+        className={`${styles.navContainer} ${
+          menuAberto ? styles.navAberto : ""
+        }`}
       >
         <Button variant="nav" href="/atuacao">
           Atuação

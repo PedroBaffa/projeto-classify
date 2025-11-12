@@ -1,11 +1,8 @@
-
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-
 import { Header } from '../Header/Header';
-import { Footer } from '../Footer/Footer';
+import { Footer } from '../Footer/Footer'; 
 import styles from './Layout.module.css';
-
 import capelo1 from '../../assets/icons/capelo1.svg';
 import capelo2 from '../../assets/icons/capelo2.svg';
 import livro1 from '../../assets/icons/livro1.svg';
@@ -17,7 +14,7 @@ import teacher2 from '../../assets/icons/teacher2.svg';
 export function Layout() {
   return (
     <div className={styles.container}>
-
+      
       <div className={styles.fallingItemsContainer}>
         <img src={capelo1} alt="" className={`${styles.item} ${styles.item1}`} />
         <img src={livro1} alt="" className={`${styles.item} ${styles.item2}`} />
@@ -34,11 +31,11 @@ export function Layout() {
       <Header />
 
       <main className={styles.mainContentArea}>
-        <Outlet />
+        <Outlet /> 
       </main>
 
       <Footer />
-
+      
     </div>
   );
 }

@@ -1,12 +1,12 @@
 .buttonBase {
   align-items: center;
-  border-radius: 50px;
+  border-radius: 40px;
   display: inline-flex;
   gap: 10px;
   height: 60px;
   justify-content: center;
   overflow: hidden;
-  padding: 15px 20px;
+  padding: 5px 20px;
   position: relative;
   color: #ffffff;
   font-family: "Poppins", sans-serif;
@@ -19,7 +19,6 @@
   transition: all 0.2s ease-in-out;
   text-decoration: none;
 }
-
 .buttonBase:hover {
   transform: scale(1.05);
   opacity: 0.9;
@@ -34,12 +33,9 @@
   background-color: #e57734;
 }
 
-
 .active {
   background-color: #e57734;
-
   border: 1px solid #ffffff;
-
   color: #ffffff;
 }
 

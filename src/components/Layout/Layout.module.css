@@ -1,12 +1,9 @@
 .container {
   display: flex;
   flex-direction: column;
-
-  min-height: 100vh;
-
-  position: relative;
-
-  overflow: hidden;
+  min-height: 100vh; 
+  position: relative; 
+  overflow: hidden; 
 }
 
 .mainContentArea {
@@ -15,15 +12,11 @@
   padding: 2rem 20px;
   width: 100%;
   box-sizing: border-box;
-
-  z-index: 1;
-
+  z-index: 1; 
   flex-grow: 1;
-
   display: flex;
   flex-direction: column;
 }
-
 
 .fallingItemsContainer {
   position: absolute;
@@ -31,90 +24,75 @@
   left: 0;
   width: 100%;
   height: 100%;
-
-  z-index: 0;
+  z-index: 0; 
 }
 
 @keyframes fall {
   from {
-    transform: translateY(-10vh);
+    transform: translateY(-10vh); 
     opacity: 0;
   }
-
   to {
-    transform: translateY(110vh);
-
-    opacity: 0.5;
+    transform: translateY(110vh); 
+    opacity: 0.5; 
   }
 }
 
 .item {
   position: absolute;
-  top: -10%;
-
-  width: 60px;
+  top: -10%;   
+  width: 60px; 
   height: 60px;
-
   animation-name: fall;
-  animation-timing-function: linear;
+  animation-timing-function: linear; 
   animation-iteration-count: infinite;
 }
-
 
 .item1 {
   left: 10%;
   animation-duration: 15s;
   animation-delay: 0s;
 }
-
 .item2 {
   left: 20%;
   animation-duration: 10s;
   animation-delay: 2s;
 }
-
 .item3 {
   left: 30%;
   animation-duration: 12s;
   animation-delay: 5s;
 }
-
 .item4 {
   left: 40%;
   animation-duration: 8s;
   animation-delay: 1s;
 }
-
 .item5 {
   left: 50%;
   animation-duration: 13s;
   animation-delay: 3s;
 }
-
 .item6 {
   left: 60%;
   animation-duration: 10s;
   animation-delay: 6s;
 }
-
 .item7 {
   left: 70%;
   animation-duration: 11s;
   animation-delay: 4s;
 }
-
 .item8 {
   left: 80%;
   animation-duration: 9s;
   animation-delay: 2s;
 }
-
 .item9 {
   left: 85%;
   animation-duration: 14s;
   animation-delay: 7s;
 }
-
 .item10 {
   left: 90%;
   animation-duration: 10s;
