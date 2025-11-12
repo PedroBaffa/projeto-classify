@@ -12,7 +12,7 @@ export function Footer() {
 
         {/* Nomes dos Participantes */}
         <div className={styles.participants}>
-          <span>Pedro Baffa</span>
+          <span>Pedro Baffa Carvalho</span>
           <span>Iann Nogueira Schmith</span>
           <span>Mateus Simões Marques</span>
           <span>Leonardo Albuquerque Avigro</span>
