@@ -1,8 +1,3 @@
-/* src/pages/TelaAtuacao/TelaAtuacao.module.css */
-
-/* A classe .mainContent foi movida para Layout.module.css */
-/* Este arquivo agora só contém estilos *desta página* */
-
 .title {
   font-family: "Poppins", sans-serif;
   font-size: 32px;
@@ -27,13 +22,11 @@
 .contentGrid {
   display: grid;
 
-  /* Em telas maiores, 2 colunas */
   grid-template-columns: 1fr 1fr;
-  gap: 2rem; /* Espaço entre os cards */
+  gap: 2rem;
 }
 
 .card {
-  /* Efeito "vidro" (Tema Claro) */
   background-color: rgba(240, 240, 240, 0.6);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -60,10 +53,8 @@
   text-align: justify;
 }
 
-/* Media Query para Responsividade */
 @media (max-width: 768px) {
   .contentGrid {
-    /* Em telas de telemóvel, 1 coluna */
     grid-template-columns: 1fr;
   }
 }

@@ -1,9 +1,8 @@
 import React from 'react';
-import styles from './TelaAtuacao.module.css'; 
+import styles from './TelaAtuacao.module.css';
 
 export function TelaAtuacao() {
   return (
-    // O <main> foi movido para o Layout.tsx
     <>
       <h1 className={styles.title}>Atuação</h1>
 
@@ -16,7 +15,7 @@ export function TelaAtuacao() {
       </p>
 
       <div className={styles.contentGrid}>
-        
+
         <div className={styles.card}>
           <h3>Escolas Públicas:</h3>
           <p>

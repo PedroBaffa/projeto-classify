@@ -3,7 +3,7 @@ import { Layout } from './components/Layout/Layout'; // O nosso "molde"
 
 // --- NOSSAS PÁGINAS REAIS ---
 import { TelaInicial } from './pages/TelaInicial/TelaInicial';
-import { TelaAtuacao } from './pages/TelaAtuacao/TelaAtuacao'; 
+import { TelaAtuacao } from './pages/TelaAtuacao/TelaAtuacao';
 import { TelaServicos } from './pages/TelaServicos/TelaServicos'; // 1. IMPORTE A NOVA PÁGINA
 
 // --- Placeholders (Páginas em breve) ---
@@ -22,18 +22,16 @@ function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        
+
         <Route path="/" element={<TelaInicial />} />
         <Route path="/atuacao" element={<TelaAtuacao />} />
-        
-        {/* 2. ADICIONE A NOVA ROTA AQUI */}
+
         <Route path="/servicos" element={<TelaServicos />} />
-        
-        {/* 3. ADICIONEI AS ROTAS RESTANTES */}
+
         <Route path="/suporte" element={<PaginaSuporte />} />
         <Route path="/sobre-nos" element={<PaginaSobreNos />} />
         <Route path="/entrar" element={<PaginaEntrar />} />
-      
+
       </Route>
     </Routes>
   );

@@ -1,26 +1,20 @@
-/* src/components/Footer/Footer.module.css */
-
 .footer {
   width: 100%;
-  padding: 2rem 20px; /* Espaçamento interno */
+  padding: 2rem 20px;
   box-sizing: border-box;
 
-  /* Garante que fique na frente da animação */
   z-index: 1;
 
-  /* --- EFEITO VIDRO (TEMA CLARO) --- */
-  background-color: rgba(240, 240, 240, 0.6); /* "Vidro" cinza claro */
+  background-color: rgba(240, 240, 240, 0.6);
+  /* "Vidro" cinza claro */
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Borda superior sutil */
-
-  /* Estilo do texto */
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   color: #333;
   text-align: center;
 }
 
 .content {
-  /* Limita a largura do conteúdo, igual ao .mainContent */
   max-width: 960px;
   margin: 0 auto;
 }
@@ -34,11 +28,9 @@
 .participants {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Para quebrar a linha no telemóvel */
+  flex-wrap: wrap;
 
-  /* Espaçamento entre os nomes */
-  gap: 5px 15px; /* 5px vertical, 15px horizontal */
-
+  gap: 5px 15px;
   margin: 0 0 10px 0;
   font-size: 14px;
 }
@@ -48,5 +40,5 @@
   font-style: italic;
   line-height: 1.5;
   margin: 0;
-  opacity: 0.8; /* Um pouco mais sutil */
+  opacity: 0.8;
 }

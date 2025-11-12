@@ -1,13 +1,7 @@
-/* src/pages/TelaInicial/TelaInicial.module.css */
-
 .heroContainer {
-  /* 1. Faz este container "crescer" e tomar todo o 
-     espaço que o <main> (o pai) lhe deu */
-  flex-grow: 1;
+   flex-grow: 1;
 
-  /* 2. Usa flexbox para centralizar o seu 
-     próprio conteúdo (o <HeroLogo>) */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }

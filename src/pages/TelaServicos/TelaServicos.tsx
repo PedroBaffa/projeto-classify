@@ -1,12 +1,10 @@
-// 1. REUTILIZAMOS OS ESTILOS DA PÁGINA "ATUAÇÃO"!
-import styles from '../TelaAtuacao/TelaAtuacao.module.css'; 
+
+import styles from '../TelaAtuacao/TelaAtuacao.module.css';
 
 export function TelaServicos() {
   return (
-    // 2. Usamos as MESMAS classes CSS: .mainContent, .title, etc.
     <main className={styles.mainContent}>
-      
-      {/* 3. Trocamos apenas o conteúdo (texto) */}
+
       <h1 className={styles.title}>Serviços</h1>
 
       <p className={styles.introParagraph}>
@@ -17,8 +15,7 @@ export function TelaServicos() {
       </p>
 
       <div className={styles.contentGrid}>
-        
-        {/* Card 1: Cadastro de Professores */}
+
         <div className={styles.card}>
           <h3>Cadastro de Professores com Preferências:</h3>
           <p>
@@ -28,7 +25,6 @@ export function TelaServicos() {
           </p>
         </div>
 
-        {/* Card 2: Gestão Inteligente */}
         <div className={styles.card}>
           <h3>Gestão Inteligente de Turmas e Disciplinas:</h3>
           <p>
@@ -38,7 +34,6 @@ export function TelaServicos() {
           </p>
         </div>
 
-        {/* (Pode adicionar mais cards aqui e o grid vai-se ajustar) */}
       </div>
     </main>
   );

@@ -1,43 +1,29 @@
-/* src/components/Layout/Layout.module.css */
-
 .container {
-  /* Define o layout principal para empilhar (Header, Main, Footer) */
   display: flex;
   flex-direction: column;
-  
-  /* Garante que o layout ocupe no mínimo a altura total da tela */
-  min-height: 100vh; 
-  
-  /* Necessário para o posicionamento da animação */
-  position: relative; 
-  
-  /* Esconde os ícones que "caem" para fora da tela */
-  overflow: hidden; 
+
+  min-height: 100vh;
+
+  position: relative;
+
+  overflow: hidden;
 }
 
-/* --- ÁREA DE CONTEÚDO PRINCIPAL --- */
 .mainContentArea {
-  /* 1. Define o layout do conteúdo */
   max-width: 960px;
   margin: 0 auto;
   padding: 2rem 20px;
-  width: 100%; /* Garante que o padding seja respeitado */
-  box-sizing: border-box; /* Importante para o padding */
-  
-  /* 2. Garante que fique na frente da animação */
-  z-index: 1; 
-  
-  /* 3. A MÁGICA: Faz o <main> crescer e empurrar o Footer para baixo */
+  width: 100%;
+  box-sizing: border-box;
+
+  z-index: 1;
+
   flex-grow: 1;
 
-  /* 4. CORREÇÃO: Transforma o <main> num container flex 
-     para que o "filho" (TelaInicial) possa usar flex-grow */
   display: flex;
   flex-direction: column;
 }
 
-
-/* --- ANIMAÇÃO DE FUNDO --- */
 
 .fallingItemsContainer {
   position: absolute;
@@ -45,89 +31,90 @@
   left: 0;
   width: 100%;
   height: 100%;
-  
-  /* Coloca ele atrás de tudo */
-  z-index: 0; 
+
+  z-index: 0;
 }
 
-/* --- 3. A ANIMAÇÃO "FALL" (CAIR) --- */
 @keyframes fall {
   from {
-    /* Começa 10% acima da tela, invisível */
-    transform: translateY(-10vh); 
+    transform: translateY(-10vh);
     opacity: 0;
   }
+
   to {
-    /* Termina 10% abaixo da tela, visível */
-    transform: translateY(110vh); 
-    
-    /* A opacidade final dos ícones */
-    opacity: 0.5; 
+    transform: translateY(110vh);
+
+    opacity: 0.5;
   }
 }
 
-/* --- 4. ESTILO BASE DE CADA ITEM --- */
 .item {
   position: absolute;
-  top: -10%; /* Posição inicial (acima da tela) */
-  
-  /* Tamanho dos ícones */
-  width: 60px; 
+  top: -10%;
+
+  width: 60px;
   height: 60px;
-  
-  /* Aplica a animação */
+
   animation-name: fall;
-  animation-timing-function: linear; /* Velocidade constante */
-  animation-iteration-count: infinite; /* Repete para sempre */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
-/* --- 5. A "ALEATORIEDADE" (CSS) --- */
 
 .item1 {
   left: 10%;
   animation-duration: 15s;
   animation-delay: 0s;
 }
+
 .item2 {
   left: 20%;
   animation-duration: 10s;
   animation-delay: 2s;
 }
+
 .item3 {
   left: 30%;
   animation-duration: 12s;
   animation-delay: 5s;
 }
+
 .item4 {
   left: 40%;
   animation-duration: 8s;
   animation-delay: 1s;
 }
+
 .item5 {
   left: 50%;
   animation-duration: 13s;
   animation-delay: 3s;
 }
+
 .item6 {
   left: 60%;
   animation-duration: 10s;
   animation-delay: 6s;
 }
+
 .item7 {
   left: 70%;
   animation-duration: 11s;
   animation-delay: 4s;
 }
+
 .item8 {
   left: 80%;
   animation-duration: 9s;
   animation-delay: 2s;
 }
+
 .item9 {
   left: 85%;
   animation-duration: 14s;
   animation-delay: 7s;
 }
+
 .item10 {
   left: 90%;
   animation-duration: 10s;
