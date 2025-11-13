@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
-import styles from "../TelaLogin/TelaLogin.module.css"; // Reutiliza o CSS do Login
-
-// --- 1. IMPORTE OS ÍCONES DA ANIMAÇÃO ---
+import styles from "./TelaCadastro.module.css";
 import capelo1 from "../../assets/icons/capelo1.svg";
 import livro1 from "../../assets/icons/livro1.svg";
 import teacher1 from "../../assets/icons/teacher1.svg";
@@ -15,9 +13,7 @@ import teacher2 from "../../assets/icons/teacher2.svg";
 export function TelaCadastro() {
   return (
     <div className={styles.loginPage}>
-      {/* --- PAINEL ESQUERDO (Idêntico ao Login) --- */}
       <div className={styles.leftPanel}>
-        {/* --- 2. ADICIONE A ANIMAÇÃO AQUI --- */}
         <div className={styles.fallingItemsContainer}>
           <img
             src={capelo1}
@@ -76,7 +72,6 @@ export function TelaCadastro() {
         </div>
       </div>
 
-      {/* --- PAINEL DIREITO (Conteúdo Instrucional) --- */}
       <div className={styles.rightPanel}>
         <h1 className={styles.title}>Bem-vindo!</h1>
         <p className={styles.subtitle}>É bom ter você aqui de novo.</p>
