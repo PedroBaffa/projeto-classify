@@ -1,0 +1,63 @@
+.appHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  height: 60px;
+  padding: 0 2rem;
+  
+  background-color: #01757A; 
+  border-bottom: 5px solid #E57734; 
+  color: #FFF;
+  
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.dropdownInstituicao {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdownIcon {
+  font-size: 10px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+.profilePicPlaceholder {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #E57734;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
