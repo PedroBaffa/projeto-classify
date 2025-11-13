@@ -1,0 +1,102 @@
+/* src/pages/QuadroDeAulas/QuadroDeAulas.module.css */
+
+/* --- 1. BARRA DE FILTROS (CENTRALIZADA) --- */
+.filterBar {
+  display: flex;
+  
+  /* MUDANÇA: Centraliza os itens */
+  justify-content: center; 
+  
+  align-items: center;
+  margin-bottom: 1.5rem;
+  
+  /* ADIÇÃO: Espaço entre os 3 blocos */
+  gap: 2rem; 
+  
+  /* Garante quebra em telas pequenas */
+  flex-wrap: wrap; 
+}
+
+/* --- 2. CONTROLO DA SEMANA (NOVO ESTILO) --- */
+.weekControl {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  
+  /* ADIÇÃO: Estilo de "bloco" */
+  background-color: #FFF;
+  border-radius: 8px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+/* --- 3. SETAS (NOVO ESTILO) --- */
+.weekArrow {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  
+  /* ADIÇÃO: Círculo cinza */
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  
+  /* Centraliza o ícone da seta */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  transition: background-color 0.2s ease;
+}
+
+.weekArrow:hover {
+  background-color: #e0e0e0;
+}
+
+.weekLabel {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  /* Impede que o texto seja selecionado ao clicar nas setas */
+  user-select: none; 
+}
+
+/* --- 4. BOTÕES (Estilos antigos mantidos) --- */
+.dropdownMes {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #e57734;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.todayButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #e57734;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.todayButton:hover {
+  opacity: 0.9;
+}
+
+/* --- 5. GRID DA SEMANA (Placeholder) --- */
+.weekGrid {
+  /* (Estilos do grid virão aqui) */
+}
