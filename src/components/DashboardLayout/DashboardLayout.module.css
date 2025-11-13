@@ -1,0 +1,30 @@
+/* src/components/DashboardLayout/DashboardLayout.module.css */
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #F4F4F4;
+}
+
+.appHeader {
+  height: 60px;
+  background-color: #01757A;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.appSubNav {
+  height: 50px;
+  background-color: #FFF;
+  border-bottom: 1px solid #DDD;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.dashboardContent {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
