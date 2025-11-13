@@ -1,20 +1,15 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styles from './DashboardLayout.module.css';
-
-function AppHeaderPlaceholder() {
-  return <header className={styles.appHeader}>[App Header Placeholder]</header>;
-}
-function AppSubNavPlaceholder() {
-  return <nav className={styles.appSubNav}>[App SubNav Placeholder]</nav>;
-}
+import { AppHeader } from '../AppHeader/AppHeader';
+import { AppSubNav } from '../AppSubNav/AppSubNav';
 
 export function DashboardLayout() {
   return (
     <div className={styles.dashboardContainer}>
       
-      <AppHeaderPlaceholder />
-      <AppSubNavPlaceholder />
+      <AppHeader />
+      <AppSubNav />
 
       <main className={styles.dashboardContent}>
         <Outlet />
