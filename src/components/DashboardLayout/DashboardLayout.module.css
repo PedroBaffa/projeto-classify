@@ -1,4 +1,3 @@
-/* src/components/DashboardLayout/DashboardLayout.module.css */
 .dashboardContainer {
   display: flex;
   flex-direction: column;
@@ -16,12 +15,9 @@
 }
 
 .appSubNav {
-  height: 50px;
-  background-color: #FFF;
-  border-bottom: 1px solid #DDD;
+  padding: 2rem 0;
   display: flex;
-  align-items: center;
-  padding: 0 1rem;
+  justify-content: center;
 }
 
 .dashboardContent {
