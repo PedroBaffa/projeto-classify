@@ -1,0 +1,203 @@
+.loginPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.leftPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroWrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #01757a;
+  padding: 4rem;
+  color: #fff;
+  align-items: center;
+  text-align: left;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.formButton {
+  background-color: #e57734;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
+  display: block;
+}
+
+.formButton:hover {
+  opacity: 0.9;
+}
+
+.instrucoesCadastro {
+  margin-bottom: 2rem;
+  flex-grow: 1;
+  width: 100%;
+  max-width: 400px;
+}
+
+.instrucoesTitulo {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.instrucoesTexto {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.instrucoesTexto strong {
+  font-weight: 700;
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .loginPage {
+    grid-template-columns: 1fr;
+  }
+
+  .leftPanel {
+    padding: 2rem;
+    min-height: auto;
+  }
+
+  .rightPanel {
+    min-height: auto;
+    padding: 2rem;
+  }
+
+  .fallingItemsContainer {
+    display: none;
+  }
+}
+
+.fallingItemsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(110vh);
+    opacity: 0.2;
+  }
+}
+
+.item {
+  position: absolute;
+  top: -10%;
+  width: 30px;
+  height: 30px;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.item1 {
+  left: 10%;
+  animation-duration: 15s;
+  animation-delay: 0s;
+}
+.item2 {
+  left: 20%;
+  animation-duration: 10s;
+  animation-delay: 2s;
+}
+.item3 {
+  left: 30%;
+  animation-duration: 12s;
+  animation-delay: 5s;
+}
+.item4 {
+  left: 40%;
+  animation-duration: 8s;
+  animation-delay: 1s;
+}
+.item5 {
+  left: 50%;
+  animation-duration: 13s;
+  animation-delay: 3s;
+}
+.item6 {
+  left: 60%;
+  animation-duration: 10s;
+  animation-delay: 6s;
+}
+.item7 {
+  left: 70%;
+  animation-duration: 11s;
+  animation-delay: 4s;
+}
+.item8 {
+  left: 80%;
+  animation-duration: 9s;
+  animation-delay: 2s;
+}
+.item9 {
+  left: 85%;
+  animation-duration: 14s;
+  animation-delay: 7s;
+}
+.item10 {
+  left: 90%;
+  animation-duration: 10s;
+  animation-delay: 0s;
+}
