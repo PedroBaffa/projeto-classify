@@ -11,6 +11,7 @@ import { TelaLogin } from './pages/TelaLogin/TelaLogin';
 import { TelaCadastro } from './pages/TelaCadastro/TelaCadastro';
 import { TelaAlterarSenha } from './pages/TelaAlterarSenha/TelaAlterarSenha';
 import { QuadroDeAulas } from './pages/QuadroDeAulas/QuadroDeAulas';
+import { MinhasUCs } from './pages/MinhasUcs/MinhasUcs'; 
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
 
       <Route element={<DashboardLayout />}>
         <Route path="/dashboard" element={<QuadroDeAulas />} />
+        <Route path="/minhas-ucs" element={<MinhasUCs />} />
       </Route>
       
     </Routes>
