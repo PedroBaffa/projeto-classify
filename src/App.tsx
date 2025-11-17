@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import { DashboardLayout } from './components/DashboardLayout/DashboardLayout';
 import { TelaInicial } from './pages/TelaInicial/TelaInicial';
+import { TelaServicos } from './pages/TelaServicos/TelaServicos';
+import { TelaSuporte } from './pages/TelaSuporte/TelaSuporte';
 import { TelaAtuacao } from './pages/TelaAtuacao/TelaAtuacao'; 
 import { TelaSobreNos } from './pages/TelaSobreNos/TelaSobreNos';
 import { TelaLogin } from './pages/TelaLogin/TelaLogin';
@@ -16,6 +18,8 @@ function App() {
       
       <Route element={<Layout />}>
         <Route path="/" element={<TelaInicial />} />
+        <Route path="/servicos" element={<TelaServicos />} />
+        <Route path="/suporte" element= {<TelaSuporte />} />
         <Route path="/atuacao" element={<TelaAtuacao />} />
         <Route path="/sobre-nos" element={<TelaSobreNos />} />
       </Route>
