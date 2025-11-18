@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "vite preview --port 3000 --host"
+    "start": "vite preview --port 2985 --host"
   },
   "dependencies": {
     "react": "^19.2.0",

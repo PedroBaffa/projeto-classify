@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "./FormCriarUCs.module.css";
+import styles from "./FormCriarUcs.module.css";
 import { mockUCs } from "../../../data/mockData";
 
 interface FormProps {

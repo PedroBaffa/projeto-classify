@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./TelaRelatorios.module.css";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
 import { mockSalas, mockUCs } from "../../data/mockData";
@@ -7,7 +7,7 @@ type ActiveTab = "salas" | "ucs" | null;
 
 export function TelaRelatorios() {
   const [activeTab, setActiveTab] = useState<ActiveTab>(null);
-  const [salaSelecionada, setSalaSelecionada] = useState(mockSalas[0]);
+  const [salaSelecionada] = useState(mockSalas[0]);
 
   const renderContent = () => {
     switch (activeTab) {

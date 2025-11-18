@@ -66,7 +66,7 @@ COPY --from=build /usr/src/app/dist ./dist
 
 
 # Expose the port that the application listens on.
-EXPOSE 3000
+EXPOSE 2985
 
 # Run the application.
 CMD npm run start

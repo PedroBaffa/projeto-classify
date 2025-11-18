@@ -1,4 +1,4 @@
-import styles from "./MinhasUCs.module.css";
+import styles from "./MinhasUcs.module.css";
 import { mockUCs } from "../../data/mockData"; 
 
 export function MinhasUCs() {
