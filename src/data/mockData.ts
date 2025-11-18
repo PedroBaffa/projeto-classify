@@ -77,3 +77,104 @@ export const mockSalas = [
     ],
   },
 ];
+
+
+export const weekData = [
+  {
+    day: "Domingo",
+    status: "empty", 
+    aulaBlock: null,
+    pills: [],
+  },
+  {
+    day: "Segunda-feira",
+    status: "normal",
+    aulaBlock: "Aulas - Manhã\n8:00 às 12:00",
+    pills: [
+      { id: 1, text: "ADS - 1º Sem (A)", type: "normal" },
+      { id: 2, text: "Eng. Comp - 2º Sem (A)", type: "normal" },
+      { id: 3, text: "Eng. Civil - 1º Sem (B)", type: "normal" },
+      { id: 4, text: "ADS - 1º Sem (A)", type: "normal" },
+      { id: 5, text: "Vaga", type: "vaga" },
+      { id: 6, text: "ATPC", type: "atpc" },
+    ],
+  },
+  {
+    day: "Terça-feira",
+    status: "normal",
+    aulaBlock: "Aulas - Tarde\n13:00 às 17:00",
+    pills: [
+      { id: 7, text: "Eng. Comp - 2º Sem (A)", type: "normal" },
+      { id: 8, text: "Vaga", type: "vaga" },
+      { id: 9, text: "Ciência da Comp. - 3º Sem", type: "normal" },
+      { id: 10, text: "Vaga", type: "vaga" },
+      { id: 11, text: "ADS - 1º Sem (A)", type: "normal" },
+      { id: 12, text: "Vaga", type: "vaga" },
+    ],
+  },
+  {
+    day: "Quarta-feira",
+    status: "normal",
+    aulaBlock: "Aulas - Manhã\n8:00 às 12:00",
+    pills: [
+      { id: 13, text: "Vaga", type: "vaga" },
+      { id: 14, text: "ADS - 1º Sem (A)", type: "normal" },
+      { id: 15, text: "Eng. Civil - 1º Sem (B)", type: "normal" },
+      { id: 16, text: "Vaga", type: "vaga" },
+      { id: 17, text: "Eng. Comp - 2º Sem (A)", type: "normal" },
+      { id: 18, text: "Vaga", type: "vaga" },
+    ],
+  },
+  {
+    day: "Quinta-feira",
+    status: "holiday",
+    aulaBlock: null,
+    pills: [{ id: 19, text: "Feriado", type: "holiday" }],
+  },
+  {
+    day: "Sexta-feira",
+    status: "normal",
+    aulaBlock: "Aulas - Noite\n19:00 às 22:30",
+    pills: [
+      { id: 20, text: "Ciência da Comp. - 3º Sem", type: "normal" },
+      { id: 21, text: "ADS - 1º Sem (A)", type: "normal" }
+    ],
+  },
+  {
+    day: "Sábado",
+    status: "empty",
+    aulaBlock: null,
+    pills: [],
+  },
+];
+
+export const mockSolicitacoes = [
+  {
+    id: 1,
+    tipo: "escala",
+    titulo: "Alteração de escala (Manhã)",
+    status: "pendente",
+    descricao: "Gostaria de solicitar a troca da minha aula de 'Cálculo 1' (ADS - 1º Sem (A)) da Segunda-feira (8:00) para a Quarta-feira (10:00), pois tenho uma consulta médica recorrente.",
+  },
+  {
+    id: 2,
+    tipo: "escala",
+    titulo: "Alteração de escala (Noite)",
+    status: "resolvido",
+    descricao: "Solicitei a remoção da aula de Sexta-feira à noite, e já foi aprovada pela coordenação. Esta solicitação pode ser arquivada.",
+  },
+  {
+    id: 3,
+    tipo: "ucs",
+    titulo: "Adicionar UC de 'IA'",
+    status: "pendente",
+    descricao: "Tenho especialização em Inteligência Artificial e gostaria de ser considerado para lecionar a nova UC 'IA Aplicada' no próximo semestre.",
+  },
+  {
+    id: 4,
+    tipo: "salas",
+    titulo: "Problema na Sala 205B",
+    status: "resolvido",
+    descricao: "O projetor da sala 205B estava com problemas. A manutenção já foi efetuada e o problema foi resolvido.",
+  },
+];
