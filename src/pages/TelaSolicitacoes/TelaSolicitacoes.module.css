@@ -173,3 +173,92 @@
 .detailRemoveButton {
   background-color: #c0392b;
 }
+.modalBackdrop {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; 
+  animation: fadeIn 0.3s ease; 
+}
+
+.modalContent {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fdfbf5; 
+  border: 1px solid #f0eae0;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  animation: slideDownFadeIn 0.3s ease-out; 
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: flex-end; 
+}
+
+.modalCloseButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 700;
+  color: #aaa;
+  cursor: pointer;
+  line-height: 1;
+}
+.modalCloseButton:hover {
+  color: #333;
+}
+
+.modalBody {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  padding: 1rem 1.5rem;
+}
+
+.modalFooter {
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+}
+
+.modalConfirmButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #e57734; 
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+.modalConfirmButton:hover {
+  opacity: 0.9;
+}
+
+
+@keyframes slideDownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

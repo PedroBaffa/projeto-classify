@@ -1,3 +1,4 @@
+// src/pages/TelaSolicitacoes/TelaSolicitacoes.tsx
 import React, { useState } from "react";
 import styles from "./TelaSolicitacoes.module.css";
 import { mockSolicitacoes } from "../../data/mockData";
@@ -7,7 +8,27 @@ type Solicitacao = (typeof mockSolicitacoes)[0];
 
 export function TelaSolicitacoes() {
   const [selectedRequest, setSelectedRequest] = useState<Solicitacao | null>(null);
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleOpenModal = (e: React.MouseEvent) => {
+    e.stopPropagation(); 
+    setIsModalOpen(true);
+  };
+
+  
+  const handleConfirmRemove = () => {
+    
+    console.log("Removendo solicitação:", selectedRequest?.id);
+    handleCloseModal();
+    setSelectedRequest(null); 
+  };
+
+  
   const renderDetailContent = () => {
     if (!selectedRequest) {
       return (
@@ -25,7 +46,13 @@ export function TelaSolicitacoes() {
         {selectedRequest.status === "pendente" ? (
           <button className={styles.detailActionButton}>Marcar como Resolvido</button>
         ) : (
-          <button className={styles.detailRemoveButton}>Remover do Histórico</button>
+          
+          <button 
+            className={styles.detailRemoveButton}
+            onClick={handleOpenModal} // 
+          >
+            Remover do Histórico
+          </button>
         )}
       </div>
     );
@@ -33,6 +60,7 @@ export function TelaSolicitacoes() {
 
   return (
     <div className={styles.pageContainer}>
+      
       
       <div className={styles.sidebar}>
         <h1 className={styles.titulo}>Solicitações</h1>
@@ -60,12 +88,39 @@ export function TelaSolicitacoes() {
           ))}
         </div>
         
-        <button className={styles.removeButton}>Remover</button>
       </div>
 
       <div className={styles.contentArea}>
         {renderDetailContent()}
       </div>
+
+      {isModalOpen && (
+        <div className={styles.modalBackdrop} onClick={handleCloseModal}>
+          
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            
+            <div className={styles.modalHeader}>
+              <button className={styles.modalCloseButton} onClick={handleCloseModal}>
+                &times;
+              </button>
+            </div>
+
+            <div className={styles.modalBody}>
+              <p>Tem certeza que deseja remover esta solicitação?</p>
+            </div>
+
+            <div className={styles.modalFooter}>
+              <button 
+                className={styles.modalConfirmButton} 
+                onClick={handleConfirmRemove}
+              >
+                Remover
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 }
