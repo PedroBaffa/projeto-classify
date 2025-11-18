@@ -13,6 +13,7 @@ import { TelaAlterarSenha } from './pages/TelaAlterarSenha/TelaAlterarSenha';
 import { QuadroDeAulas } from './pages/QuadroDeAulas/QuadroDeAulas';
 import { MinhasUCs } from './pages/MinhasUcs/MinhasUcs'; 
 import { TelaRelatorios } from './pages/TelaRelatorios/TelaRelatorios';
+import { TelaSolicitacoes } from './pages/TelaSolicitacoes/TelaSolicitacoes';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/dashboard" element={<QuadroDeAulas />} />
         <Route path="/minhas-ucs" element={<MinhasUCs />} />
         <Route path="/relatorios" element={<TelaRelatorios />} />
+        <Route path="/solicitacoes" element={<TelaSolicitacoes />} />
       </Route>
       
     </Routes>
