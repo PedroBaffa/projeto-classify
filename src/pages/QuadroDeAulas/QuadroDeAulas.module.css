@@ -51,6 +51,11 @@
   padding: 10px 15px;
   appearance: none;
   cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center; 
+  background-size: 10px 10px; 
+  padding-right: 40px; 
 }
 .todayButton {
   font-family: "Poppins", sans-serif;
@@ -176,4 +181,45 @@
   background-color: #f9f9f9;
   color: #888;
   border: 1px dashed #ddd;
+}
+
+@media (max-width: 900px) {
+  .weekGridWrapper {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 0 1rem 1rem;
+    scrollbar-width: none;
+  }
+  .weekGridWrapper::-webkit-scrollbar {
+    display: none; 
+  }
+
+  .weekGrid {
+    width: fit-content;
+    padding-right: 1rem;
+  }
+
+  .dayColumn {
+    min-width: 110px;
+  }
+  .pill {
+    font-size: 11px;
+  }
+
+  .filterBar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .filterBar .dropdownMes,
+  .filterBar .weekControl,
+  .filterBar .todayButton {
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
+  }
+  
+  .filterBar .weekControl {
+    justify-content: center;
+  }
 }

@@ -162,3 +162,15 @@
     opacity: 1;
   }
 }
+
+@media (max-width: 900px) {
+  .formBody {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .formContainer {
+    padding: 1rem;
+  }
+}
