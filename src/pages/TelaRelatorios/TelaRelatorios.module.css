@@ -1,20 +1,15 @@
-/* src/pages/TelaRelatorios/TelaRelatorios.module.css */
-
 .pageContainer {
   display: flex;
   height: 100%;
   width: 100%;
-  /* Define a altura para ocupar o espaço do dashboard */
   flex-grow: 1;
-  /* Garante que o container se expande */
-  max-height: 75vh; /* Limita a altura, podes ajustar */
+  max-height: 75vh;
 }
 
-/* --- 1. Sidebar (Coluna da Esquerda) --- */
 .sidebar {
-  flex-basis: 300px; /* Largura fixa */
+  flex-basis: 300px;
   flex-shrink: 0;
-  background-color: #fdfbf5; /* Cor de fundo (baseada na imagem) */
+  background-color: #fdfbf5;
   padding: 2rem;
   border-radius: 8px;
   border: 1px solid #f0eae0;
@@ -46,7 +41,6 @@
   transition: all 0.2s ease;
 }
 
-/* Botão Inativo */
 .navButton {
   background-color: #fff;
   color: #e57734;
@@ -56,13 +50,11 @@
   background-color: #fdf0d5;
 }
 
-/* Botão Ativo */
 .navButtonActive {
   background-color: #e57734;
   color: #fff;
 }
 
-/* Caixa de Informação (Capacidade) */
 .infoBox {
   margin-top: 2rem;
   padding: 1rem;
@@ -101,7 +93,6 @@
   font-size: 16px;
 }
 
-/* --- 2. Content Area (Coluna da Direita) --- */
 .contentArea {
   flex-grow: 1;
   background-color: #fdfbf5;
@@ -109,37 +100,29 @@
   border: 1px solid #f0eae0;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-
-  /* A MÁGICA DO SCROLL HORIZONTAL */
-  display: flex; /* Alinha o conteúdo (seja placeholder ou scroll) */
-  overflow-x: auto; /* Permite o scroll horizontal */
-  overflow-y: hidden; /* Esconde o scroll vertical */
-  
-  /* Para o alinhamento do placeholder */
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
   align-items: center;
   justify-content: center;
 }
 
-/* Placeholder (Logo Classify) */
 .placeholder {
   transform: scale(0.8);
   opacity: 0.6;
 }
 
-/* Wrapper para os cartões com scroll */
 .scrollWrapper {
-  display: flex; /* Faz os cartões ficarem lado a lado */
+  display: flex;
   gap: 1.5rem;
   width: 100%;
   height: 100%;
-  
-  /* Remove o alinhamento do contentArea */
   align-items: flex-start;
   justify-content: flex-start;
 }
 
 .contentCard {
-  flex-shrink: 0; /* Impede que os cartões encolham */
+  flex-shrink: 0;
   width: 250px;
   background-color: #fff;
   border-radius: 8px;
@@ -162,7 +145,6 @@
   margin: 1rem 0;
 }
 
-/* Estilos para "Relatório de Salas" */
 .availabilityList p {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
@@ -189,7 +171,6 @@
   color: #aaa;
 }
 
-/* Estilos para "Relatório de UCs" */
 .turmaList {
   display: flex;
   flex-direction: column;
