@@ -173,6 +173,7 @@
 .detailRemoveButton {
   background-color: #c0392b;
 }
+
 .modalBackdrop {
   position: fixed; 
   top: 0;
@@ -246,6 +247,35 @@
   opacity: 0.9;
 }
 
+.createButtonActive {
+  background-color: #c9682c;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+  transform: scale(0.98);
+}
+
+@media (max-width: 900px) {
+  .pageContainer {
+    flex-direction: column;
+    max-height: none;
+    height: auto;
+  }
+
+  .sidebar,
+  .requestList,
+  .contentArea {
+    flex-basis: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .requestList {
+    height: 400px; 
+  }
+
+  .contentArea {
+    min-height: 300px;
+  }
+}
 
 @keyframes slideDownFadeIn {
   from {
@@ -261,10 +291,4 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-.createButtonActive {
-  background-color: #c9682c;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
-  transform: scale(0.98);
 }

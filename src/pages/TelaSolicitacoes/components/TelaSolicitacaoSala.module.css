@@ -284,6 +284,22 @@
   opacity: 0.9;
 }
 
+@media (max-width: 900px) {
+  .formBody {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .formContainer {
+    padding: 1rem;
+  }
+
+  .acoesColumn {
+    padding: 1rem;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

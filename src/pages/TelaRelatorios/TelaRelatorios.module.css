@@ -186,3 +186,24 @@
   border-radius: 6px;
   text-align: center;
 }
+
+@media (max-width: 900px) {
+  .pageContainer {
+    flex-direction: column;
+    max-height: none;
+    height: auto;
+  }
+
+  .sidebar {
+    flex-basis: auto;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .contentArea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
