@@ -78,7 +78,6 @@ export function TelaSolicitacoes() {
         <p className={styles.detailDescription}>{selectedRequest.descricao}</p>
         
         {selectedRequest.status === "pendente" ? (
-          // Botão "Resolvido" agora abre seu próprio modal
           <button 
             className={styles.detailActionButton}
             onClick={handleOpenResolveModal}
@@ -86,7 +85,6 @@ export function TelaSolicitacoes() {
             Marcar como Resolvido
           </button>
         ) : (
-          // Botão "Remover" chama a função renomeada
           <button 
             className={styles.detailRemoveButton}
             onClick={handleOpenRemoveModal}
@@ -98,10 +96,8 @@ export function TelaSolicitacoes() {
     );
   };
 
-  // --- RENDERIZAÇÃO: MODO LISTA (COLUNAS 2 e 3) ---
   const renderListView = () => (
     <>
-      {/* --- COLUNA 2: LISTA --- */}
       <div className={styles.requestList}>
         <h2 className={styles.listTitle}>Pendentes</h2>
         <div className={styles.listWrapper}>
@@ -121,14 +117,12 @@ export function TelaSolicitacoes() {
         </div>
       </div>
 
-      {/* --- COLUNA 3: DETALHE --- */}
       <div className={styles.contentArea}>
         {renderDetailContent()}
       </div>
     </>
   );
 
-  // --- RENDERIZAÇÃO: MODO CRIAÇÃO (FORMULÁRIO) ---
   const renderCreateView = () => {
     switch (formType) {
       case 'escala':
@@ -148,15 +142,12 @@ export function TelaSolicitacoes() {
   };
 
 
-  // --- JSX PRINCIPAL ---
   return (
     <div className={styles.pageContainer}>
       
-      {/* --- COLUNA 1: SIDEBAR --- */}
       <div className={styles.sidebar}>
         <h1 className={styles.titulo}>Solicitações</h1>
         
-        {/* ClassNames agora são condicionais para o "ativo" */}
         <button 
           className={`
             ${styles.createButton}
@@ -198,11 +189,9 @@ export function TelaSolicitacoes() {
         </button>
       </div>
 
-      {/* --- RENDERIZAÇÃO CONDICIONAL (LISTA vs FORMULÁRIO) --- */}
       {viewMode === 'list' ? renderListView() : renderCreateView()}
 
       
-      {/* --- MODAL 1: "RESOLVER SOLICITAÇÃO" --- */}
       {isResolveModalOpen && (
         <div className={styles.modalBackdrop} onClick={handleCloseResolveModal}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -226,7 +215,6 @@ export function TelaSolicitacoes() {
         </div>
       )}
 
-      {/* --- MODAL 2: "REMOVER (APAGAR) SOLICITAÇÃO" --- */}
       {isRemoveModalOpen && (
         <div className={styles.modalBackdrop} onClick={handleCloseRemoveModal}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>

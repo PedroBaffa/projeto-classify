@@ -1,5 +1,4 @@
-// src/pages/TelaSolicitacoes/components/FormCriarEscala.tsx
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./FormCriarEscala.module.css";
 import { mockUCs } from "../../../data/mockData";
 
@@ -9,18 +8,13 @@ interface FormProps {
 
 export function FormCriarEscala({ onCancel }: FormProps) {
   
-  // --- Estados do Formulário ---
   const [selectedUC, setSelectedUC] = useState(mockUCs[0].id);
   const [selectedTurma, setSelectedTurma] = useState(mockUCs[0].turmas[0]);
   const [selectedPeriodo, setSelectedPeriodo] = useState("tarde");
-  
-  // --- NOVO: Estado do Modal de Envio ---
   const [isSendModalOpen, setIsSendModalOpen] = useState(false);
-
   const ucInfo = mockUCs.find((uc) => uc.id === selectedUC) || mockUCs[0];
   const turmasDaUC = mockUCs.flatMap(uc => uc.turmas);
 
-  // --- NOVAS FUNÇÕES DO MODAL ---
   const handleOpenSendModal = () => {
     setIsSendModalOpen(true);
   };
@@ -28,30 +22,23 @@ export function FormCriarEscala({ onCancel }: FormProps) {
     setIsSendModalOpen(false);
   };
   const handleConfirmSend = () => {
-    // A Lógica de "Enviar" (ex: API call) iria aqui
     console.log("Enviando solicitação...");
     
-    // Fecha o modal
     handleCloseSendModal();
     
-    // Volta para a tela de lista (passado por props)
     onCancel(); 
   };
   
 
   return (
-    // Usamos um Fragment <> para permitir que o modal fique fora do .formContainer
     <>
       <div className={styles.formContainer}>
-        {/* HEADER */}
         <div className={styles.formHeader}>
           <h2 className={styles.formTitle}>Alterar Escala</h2>
           <button onClick={onCancel} className={styles.backButton}>Voltar</button>
         </div>
 
-        {/* CONTROLES */}
         <div className={styles.controls}>
-          {/* ... (os 3 dropdowns <select> continuam aqui) ... */}
            <select 
             className={styles.dropdown}
             value={selectedUC}
@@ -81,18 +68,14 @@ export function FormCriarEscala({ onCancel }: FormProps) {
            </select>
         </div>
 
-        {/* CORPO */}
         <div className={styles.formBody}>
           
-          {/* Coluna 1: Calendário */}
           <div className={styles.calendarColumn}>
-            {/* ... (todo o JSX do calendário) ... */}
             <div className={styles.calendarHeader}>
               <span>2025</span> 
               <div><span>{'<'}</span><span>{'>'}</span></div>
             </div>
             <div className={styles.calendarGrid}>
-              {/* ... (todos os .dayName e .day) ... */}
               <div className={styles.dayName}>M</div><div className={styles.dayName}>T</div><div className={styles.dayName}>W</div><div className={styles.dayName}>T</div><div className={styles.dayName}>F</div><div className={styles.dayName}>S</div><div className={styles.dayName}>S</div>
               <div className={styles.day}></div><div className={styles.day}></div><div className={styles.day}></div><div className={styles.day}></div>
               <div className={styles.day}>1</div>
@@ -116,21 +99,17 @@ export function FormCriarEscala({ onCancel }: FormProps) {
             </div>
           </div>
 
-          {/* Coluna 2: Área de Solicitação */}
           <div className={styles.mainContentColumn}>
-            {/* Pills */}
             <div className={styles.pillsContainer}>
               <div className={styles.pill}>{selectedTurma}</div>
               <div className={styles.pill}>{ucInfo.nome}</div>
               <div className={styles.pill}>{selectedPeriodo}</div>
             </div>
-            {/* Textarea */}
             <textarea
               className={styles.descricaoTextarea}
               placeholder="Escreva em detalhes a sua solicitação..."
               rows={10} 
             />
-            {/* ATUALIZADO: Botão de Enviar agora abre o modal */}
             <button 
               className={styles.sendButton} 
               onClick={handleOpenSendModal}
@@ -141,7 +120,6 @@ export function FormCriarEscala({ onCancel }: FormProps) {
         </div>
       </div> 
 
-      {/* --- (NOVO) MODAL DE CONFIRMAÇÃO DE ENVIO --- */}
       {isSendModalOpen && (
         <div className={styles.modalBackdrop} onClick={handleCloseSendModal}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -155,7 +133,7 @@ export function FormCriarEscala({ onCancel }: FormProps) {
             </div>
             <div className={styles.modalFooter}>
               <button 
-                className={styles.modalCancelButton} // Novo botão
+                className={styles.modalCancelButton}
                 onClick={handleCloseSendModal}
               >
                 Cancelar
