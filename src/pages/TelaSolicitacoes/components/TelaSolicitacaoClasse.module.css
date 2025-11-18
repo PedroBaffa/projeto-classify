@@ -68,14 +68,16 @@
   gap: 1.5rem;
 }
 
-.visualizarColumn,
-.acoesColumn {
+.visualizarColumn {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.acoesColumn {
+.editarColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   background-color: #fff;
   border: 1px solid #f0eae0;
   border-radius: 8px;
@@ -88,142 +90,85 @@
   gap: 0.5rem;
 }
 
-.inputGroup label,
-.listLabel {
+.inputGroup label {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 14px;
   color: #333;
 }
-.listLabel {
-  margin-top: 0.5rem;
-  margin-bottom: -0.5rem;
-}
 
-.reservationList {
+.ucListBox {
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid #f0eae0;
   border-radius: 8px;
-  padding: 0.5rem;
-  min-height: 350px;
+  padding: 1rem;
+  min-height: 250px;
   overflow-y: auto;
   display: flex;
-  flex-direction: column;
-  gap: 0;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-content: flex-start;
 }
 
-.reservationItem {
-  display: flex;
-  flex-direction: column;
-  padding: 12px 15px;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  margin-top: -1px;
-  background-color: #fff;
-  cursor: pointer;
-  text-align: left;
+.pill {
   font-family: "Poppins", sans-serif;
-  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  background-color: #f0f0f0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-align: center;
+  height: fit-content;
 }
-
-.reservationItem + .reservationItem:not(.reservationActive) {
-  border-top: 1px solid #f0f0f0;
-}
-.reservationList > :first-child {
-  margin-top: 0;
-}
-
-.reservationActive {
+.pillExemplo {
   background-color: #fef5ed;
   border: 1px solid #e57734;
-  z-index: 1;
-  position: relative;
-}
-
-.reservaClasse {
-  font-size: 14px;
+  color: #e57734;
   font-weight: 700;
-  color: #333;
-}
-.reservaHorario {
-  font-size: 12px;
-  font-weight: 500;
-  color: #555;
-  margin: 2px 0;
-}
-.reservaProfessor {
-  font-size: 12px;
-  font-weight: 500;
-  color: #01757a;
-}
-.noReservations {
-  text-align: center;
-  padding: 2rem;
-  color: #999;
 }
 
-.actionSection {
-  padding-top: 1rem;
-  border-top: 1px solid #f0f0f0;
-}
-.actionSection:first-child {
-  padding-top: 0;
-  border-top: none;
-}
-
-.actionTitle {
+.editTitle {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #333;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 1rem;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: auto;
 }
 
 .editButton {
   font-family: "Poppins", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
-  width: 100%;
-  padding: 15px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  background-color: #01757a;
   color: #fff;
-  margin-top: 1rem;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.2s ease;
 }
 .editButton:hover {
   opacity: 0.9;
 }
 
-.removeButton {
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  width: 100%;
-  padding: 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  background-color: #f0f0f0;
-  color: #aaa;
-  border: 1px solid #ddd;
-  margin-top: 1rem;
-}
-.removeButton:not(:disabled):hover {
-  background-color: #e0e0e0;
-  color: #333;
-}
-
-.removeButtonActive {
+.btnRemover { 
   background-color: #c4473a;
-  color: #fff;
-  border-color: transparent;
 }
-.removeButton:disabled {
-  cursor: not-allowed;
-  opacity: 0.7;
+.btnAdicionar { 
+  background-color: #01757a; 
+}
+.btnAlterar { 
+  background-color: #01757a; 
 }
 
 .modalBackdrop {
@@ -285,20 +230,10 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 @keyframes slideDownFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
 }

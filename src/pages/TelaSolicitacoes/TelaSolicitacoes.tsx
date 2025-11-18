@@ -5,6 +5,7 @@ import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
 import { FormCriarEscala } from "./components/FormCriarEscala"; 
 import { FormCriarUCs } from "./components/FormCriarUcs";
 import { TelaSolicitacaoSala } from "./components/TelaSolicitacaoSala"; 
+import { TelaSolicitacaoClasse } from "./components/TelaSolicitacaoClasse";
 
 type Solicitacao = (typeof mockSolicitacoes)[0];
 type ViewMode = 'list' | 'create';
@@ -124,14 +125,8 @@ export function TelaSolicitacoes() {
         return <TelaSolicitacaoSala onCancel={handleBackToList} />;
 
       case 'classes':
-        return (
-          <div className={styles.contentArea}>
-            <p>Formulário de "{formType}" em construção.</p>
-            <button onClick={handleBackToList} className={styles.backButtonForm}>
-              Voltar
-            </button>
-          </div>
-        );
+        return <TelaSolicitacaoClasse onCancel={handleBackToList} />;
+        
       default:
         return null;
     }
