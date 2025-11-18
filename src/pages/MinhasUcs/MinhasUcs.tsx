@@ -1,43 +1,17 @@
+// src/pages/MinhasUCs/MinhasUCs.tsx
 import React from "react";
 import styles from "./MinhasUCs.module.css";
-
-const mockUCs = [
-  {
-    id: 1,
-    nome: "Cálculo 1",
-    salas: ["Sala 301A", "Lab 1 (Bloco B)"],
-    dias: ["Segunda-feira", "Quarta-feira"],
-    cor: "laranja",
-  },
-  {
-    id: 2,
-    nome: "Programação Experimental",
-    salas: ["Laboratório de Computação (Bloco A)"],
-    dias: ["Terça-feira", "Quinta-feira"],
-    cor: "azul",
-  },
-  {
-    id: 3,
-    nome: "Algoritmos e Estrutura de Dados",
-    salas: ["Sala 205B"],
-    dias: ["Segunda-feira", "Sexta-feira"],
-    cor: "verde",
-  },
-  {
-    id: 4,
-    nome: "Projeto Interdisciplinar",
-    salas: ["Sala 101A", "Sala 101B"],
-    dias: ["Quarta-feira"],
-    cor: "roxo",
-  },
-];
+// NOVO: Importa os dados centralizados
+import { mockUCs } from "../../data/mockData"; 
 
 export function MinhasUCs() {
   return (
     <div className={styles.container}>
+      
+      {/* --- 1. BARRA DE TÍTULO E CONTROLOS --- */}
       <div className={styles.headerBar}>
         <h1 className={styles.titulo}>Minhas Unidades Curriculares</h1>
-
+        {/* ... (O resto da barra de controlos não muda) ... */}
         <div className={styles.controlsContainer}>
           <div className={styles.searchWrapper}>
             <input
@@ -47,15 +21,13 @@ export function MinhasUCs() {
             />
             <span className={styles.searchIcon}>🔍</span> 
           </div>
-
           <select className={styles.filterDropdown}>
             <option value="">Todos os Períodos</option>
             <option value="matutino">Matutino</option>
             <option value="vespertino">Vespertino</option>
             <option value="noturno">Noturno</option>
           </select>
-
-          <button className={styles.actionButton}>Procurar</button>
+          <button className={styles.actionButton}>Exportar</button>
         </div>
       </div>
 

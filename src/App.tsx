@@ -12,6 +12,7 @@ import { TelaCadastro } from './pages/TelaCadastro/TelaCadastro';
 import { TelaAlterarSenha } from './pages/TelaAlterarSenha/TelaAlterarSenha';
 import { QuadroDeAulas } from './pages/QuadroDeAulas/QuadroDeAulas';
 import { MinhasUCs } from './pages/MinhasUcs/MinhasUcs'; 
+import { TelaRelatorios } from './pages/TelaRelatorios/TelaRelatorios';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Route element={<DashboardLayout />}>
         <Route path="/dashboard" element={<QuadroDeAulas />} />
         <Route path="/minhas-ucs" element={<MinhasUCs />} />
+        <Route path="/relatorios" element={<TelaRelatorios />} />
       </Route>
       
     </Routes>
