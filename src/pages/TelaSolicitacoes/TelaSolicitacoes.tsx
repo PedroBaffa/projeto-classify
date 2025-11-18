@@ -3,6 +3,7 @@ import styles from "./TelaSolicitacoes.module.css";
 import { mockSolicitacoes } from "../../data/mockData";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
 import { FormCriarEscala } from "./components/FormCriarEscala"; 
+import { FormCriarUCs } from "./components/FormCriarUcs";
 
 type Solicitacao = (typeof mockSolicitacoes)[0];
 type ViewMode = 'list' | 'create';
@@ -115,7 +116,10 @@ export function TelaSolicitacoes() {
     switch (formType) {
       case 'escala':
         return <FormCriarEscala onCancel={handleBackToList} />;
+      
       case 'ucs':
+        return <FormCriarUCs onCancel={handleBackToList} />;
+        
       case 'classes':
       case 'salas':
         return (
@@ -132,7 +136,6 @@ export function TelaSolicitacoes() {
 
   return (
     <div className={styles.pageContainer}>
-      
       <div className={styles.sidebar}>
         <h1 className={styles.titulo}>Solicitações</h1>
         
