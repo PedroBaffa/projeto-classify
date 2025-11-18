@@ -4,6 +4,7 @@ import { mockSolicitacoes } from "../../data/mockData";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
 import { FormCriarEscala } from "./components/FormCriarEscala"; 
 import { FormCriarUCs } from "./components/FormCriarUcs";
+import { TelaSolicitacaoSala } from "./components/TelaSolicitacaoSala"; 
 
 type Solicitacao = (typeof mockSolicitacoes)[0];
 type ViewMode = 'list' | 'create';
@@ -16,7 +17,6 @@ export function TelaSolicitacoes() {
   const [formType, setFormType] = useState<FormType>(null);
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
   const [isResolveModalOpen, setIsResolveModalOpen] = useState(false);
-
 
   const handleOpenRemoveModal = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -120,12 +120,16 @@ export function TelaSolicitacoes() {
       case 'ucs':
         return <FormCriarUCs onCancel={handleBackToList} />;
         
-      case 'classes':
       case 'salas':
+        return <TelaSolicitacaoSala onCancel={handleBackToList} />;
+
+      case 'classes':
         return (
           <div className={styles.contentArea}>
             <p>Formulário de "{formType}" em construção.</p>
-            <button onClick={handleBackToList} className={styles.backButtonForm}>Voltar</button>
+            <button onClick={handleBackToList} className={styles.backButtonForm}>
+              Voltar
+            </button>
           </div>
         );
       default:
@@ -136,6 +140,7 @@ export function TelaSolicitacoes() {
 
   return (
     <div className={styles.pageContainer}>
+      
       <div className={styles.sidebar}>
         <h1 className={styles.titulo}>Solicitações</h1>
         
