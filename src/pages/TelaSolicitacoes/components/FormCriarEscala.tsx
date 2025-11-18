@@ -1,5 +1,4 @@
-// src/pages/TelaSolicitacoes/components/FormCriarEscala.tsx
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./FormCriarEscala.module.css";
 import { mockUCs } from "../../../data/mockData";
 

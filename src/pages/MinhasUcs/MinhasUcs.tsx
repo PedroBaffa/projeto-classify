@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./MinhasUCs.module.css";
 import { mockUCs } from "../../data/mockData"; 
 
