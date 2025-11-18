@@ -1,4 +1,3 @@
-import React from "react";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
 import styles from "./TelaInicial.module.css"; 
 
