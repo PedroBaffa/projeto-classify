@@ -1,30 +1,22 @@
-// src/pages/TelaSolicitacoes/TelaSolicitacoes.tsx
 import React, { useState } from "react";
 import styles from "./TelaSolicitacoes.module.css";
 import { mockSolicitacoes } from "../../data/mockData";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
 import { FormCriarEscala } from "./components/FormCriarEscala"; 
 
-// --- TIPOS ---
 type Solicitacao = (typeof mockSolicitacoes)[0];
 type ViewMode = 'list' | 'create';
 type FormType = 'escala' | 'ucs' | 'classes' | 'salas' | null;
 
 export function TelaSolicitacoes() {
   
-  // --- ESTADOS PRINCIPAIS ---
   const [selectedRequest, setSelectedRequest] = useState<Solicitacao | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [formType, setFormType] = useState<FormType>(null);
-
-  // --- ESTADOS DOS MODAIS ---
-  // Modal para REMOVER (Apagar)
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
-  // Modal para RESOLVER (Marcar como Resolvido)
   const [isResolveModalOpen, setIsResolveModalOpen] = useState(false);
 
 
-  // --- FUNÇÕES DO MODAL DE REMOÇÃO (APAGAR) ---
   const handleOpenRemoveModal = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsRemoveModalOpen(true);
@@ -38,7 +30,6 @@ export function TelaSolicitacoes() {
     setSelectedRequest(null);
   };
 
-  // --- FUNÇÕES DO MODAL DE RESOLVER ---
   const handleOpenResolveModal = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsResolveModalOpen(true);
@@ -48,12 +39,10 @@ export function TelaSolicitacoes() {
   };
   const handleConfirmResolve = () => {
     console.log("Resolvendo solicitação:", selectedRequest?.id);
-    // (Aqui, numa app real, mudaríamos o status do item)
     handleCloseResolveModal();
-    setSelectedRequest(null); // Limpa a seleção para "resetar"
+    setSelectedRequest(null);
   };
 
-  // --- FUNÇÕES DE NAVEGAÇÃO DA PÁGINA ---
   const handleShowForm = (type: FormType) => {
     setViewMode('create');
     setFormType(type);
@@ -63,7 +52,6 @@ export function TelaSolicitacoes() {
     setFormType(null);
   };
 
-  // --- RENDERIZAÇÃO: MODO LISTA (COLUNA 3) ---
   const renderDetailContent = () => {
     if (!selectedRequest) {
       return (
