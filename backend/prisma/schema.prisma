@@ -1,0 +1,62 @@
+// schema.prisma
+
+model Usuario {
+  id            Int      @id @default(autoincrement())
+  nome          String
+  email         String   @unique
+  senha         String   // Lembre-se de encriptar (bcrypt)
+  tipo          String   // 'ADMIN', 'PROFESSOR'
+  preferencias  Json?    // Para guardar as preferências da TelaAlterarSenha
+  aulas         Aula[]
+  solicitacoes  Solicitacao[]
+}
+
+model UC {
+  id      Int      @id @default(autoincrement())
+  nome    String
+  cor     String   // ex: "laranja", "azul"
+  aulas   Aula[]
+  turmas  Turma[]
+}
+
+model Sala {
+  id           Int     @id @default(autoincrement())
+  nome         String  // ex: "Sala 301A"
+  capacidade   Int
+  recursos     String? // ex: "Projetor, Ar condicionado"
+  aulas        Aula[]
+}
+
+model Turma {
+  id      Int    @id @default(autoincrement())
+  nome    String // ex: "ADS - 1º Sem (A)"
+  ucs     UC[]
+}
+
+model Aula {
+  id          Int      @id @default(autoincrement())
+  diaSemana   String   // "Segunda-feira"
+  horarioInicio DateTime
+  horarioFim    DateTime
+  
+  professorId Int
+  professor   Usuario @relation(fields: [professorId], references: [id])
+  
+  ucId        Int
+  uc          UC      @relation(fields: [ucId], references: [id])
+  
+  salaId      Int
+  sala        Sala    @relation(fields: [salaId], references: [id])
+}
+
+model Solicitacao {
+  id          Int      @id @default(autoincrement())
+  titulo      String
+  descricao   String
+  tipo        String   // "escala", "ucs", "salas"
+  status      String   @default("pendente") // "pendente", "resolvido"
+  dataCriacao DateTime @default(now())
+  
+  usuarioId   Int
+  usuario     Usuario  @relation(fields: [usuarioId], references: [id])
+}
