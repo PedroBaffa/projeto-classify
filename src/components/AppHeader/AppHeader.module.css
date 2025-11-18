@@ -2,21 +2,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
   height: 60px;
   padding: 0 2rem;
-  
-  background-color: #01757A; 
-  border-bottom: 5px solid #E57734; 
-  color: #FFF;
-  
+
+  background-color: #01757a;
+  border-bottom: 5px solid #e57734;
+  color: #fff;
+
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .logo {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 32px;
 }
@@ -34,7 +34,7 @@
   background-color: rgba(255, 255, 255, 0.2);
   padding: 8px 12px;
   border-radius: 6px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   cursor: pointer;
 }
@@ -47,7 +47,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
 }
 
@@ -55,7 +55,7 @@
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background-color: #E57734;
+  background-color: #e57734;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +82,7 @@
   top: calc(100% + 10px);
   right: 0;
   z-index: 101;
-  
+
   background-color: #fff;
   color: #333;
   border-radius: 8px;
@@ -92,7 +92,7 @@
 }
 
 .dropdownItem {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-weight: 500;
   padding: 10px 15px;
@@ -109,6 +109,43 @@
 }
 
 .logoutButton {
-  color: #E57734;
+  color: #e57734;
   font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .appHeader {
+    padding: 0 1rem;
+  }
+
+  .logo {
+    font-size: 28px;
+  }
+
+  .userMenu {
+    gap: 0.5rem;
+  }
+
+  .dropdownInstituicao span:first-child,
+  .profile span:first-child {
+    display: none;
+  }
+
+  .dropdownInstituicao {
+    padding: 8px;
+  }
+
+  .profile {
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 24px;
+  }
+
+  .appHeader {
+    padding: 0 0.75rem;
+  }
 }

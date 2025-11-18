@@ -9,6 +9,8 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   gap: 6px;
   margin-top: 1rem;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
 }
 
 .navLink {
@@ -20,6 +22,7 @@
   padding: 10px 20px;
   border-radius: 50px;
   transition: all 0.2s ease-in-out;
+  white-space: nowrap; 
 }
 
 .navLink.active {
@@ -30,4 +33,23 @@
 
 .navLink:not(.active):hover {
   background-color: #f0f0f0;
+}
+
+
+@media (max-width: 768px) {
+  .appSubNav {
+    width: auto;
+    margin: 1rem; 
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .appSubNav::-webkit-scrollbar {
+    display: none; 
+  }
+
+  .navLink {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 }
