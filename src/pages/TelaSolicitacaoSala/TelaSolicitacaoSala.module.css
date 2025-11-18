@@ -1,0 +1,315 @@
+/* --- Base --- */
+.formContainer {
+  flex-grow: 1;
+  background-color: #fdfbf5;
+  border-radius: 8px;
+  border: 1px solid #f0eae0;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  animation: fadeIn 0.5s ease;
+}
+
+.formHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f0eae0;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.formTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.backButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #aaa;
+  background: #f0f0f0;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.backButton:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.dropdown {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23555'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 10px 10px;
+  padding-right: 40px;
+}
+
+/* --- ESTILOS ADAPTADOS --- */
+
+.formBody {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.5rem;
+}
+
+.visualizarColumn,
+.acoesColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.acoesColumn {
+  background-color: #fff;
+  border: 1px solid #f0eae0;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label,
+.listLabel {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #333;
+}
+.listLabel {
+  margin-top: 0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+/* --- Lista de Reservas (Esquerda) - COM A CORREÇÃO --- */
+.reservationList {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.5rem; /* Espaço à volta da lista */
+  min-height: 350px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Remove o espaço entre os itens */
+}
+
+.reservationItem {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 15px;
+  border-radius: 6px; /* Borda arredondada para todos */
+  border: 1px solid transparent; /* Borda transparente para manter o espaço */
+  margin-top: -1px; /* Sobrepõe os itens */
+  background-color: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.2s ease;
+}
+
+/* Divisória cinza, mas NÃO se o item estiver ativo */
+/* --- CORREÇÃO AQUI --- */
+.reservationItem + .reservationItem:not(.reservationActive) {
+  border-top: 1px solid #f0f0f0; 
+}
+/* O primeiro item não tem borda de cima */
+.reservationList > :first-child {
+  margin-top: 0;
+}
+
+.reservationActive {
+  background-color: #fef5ed;
+  /* --- CORREÇÃO AQUI --- */
+  border: 1px solid #e57734; /* Borda laranja completa */
+  z-index: 1; /* Fica por cima dos outros */
+  position: relative; /* Necessário para o z-index funcionar */
+}
+/* --- FIM DA CORREÇÃO --- */
+
+.reservaClasse {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+}
+.reservaHorario {
+  font-size: 12px;
+  font-weight: 500;
+  color: #555;
+  margin: 2px 0;
+}
+.reservaProfessor {
+  font-size: 12px;
+  font-weight: 500;
+  color: #01757a;
+}
+.noReservations {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+}
+
+/* Ações (Direita) */
+.actionSection {
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+}
+.actionSection:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.actionTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.editButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #01757a;
+  color: #fff;
+  margin-top: 1rem;
+}
+.editButton:hover {
+  opacity: 0.9;
+}
+
+.removeButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #f0f0f0;
+  color: #aaa;
+  border: 1px solid #ddd;
+  margin-top: 1rem;
+}
+.removeButton:not(:disabled):hover {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.removeButtonActive {
+  background-color: #c4473a;
+  color: #fff;
+  border-color: transparent;
+}
+.removeButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* --- Modais --- */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fdfbf5;
+  border: 1px solid #f0eae0;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  animation: slideDownFadeIn 0.3s ease-out;
+}
+
+.modalBody {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  padding: 1rem;
+}
+
+.modalFooter {
+  padding: 1rem 0 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.modalConfirmButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  max-width: 200px;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #e57734;
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+.modalConfirmButton:hover {
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideDownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
