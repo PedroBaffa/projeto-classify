@@ -1,43 +1,50 @@
-// schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// --- Seus Modelos ---
 
 model Usuario {
-  id            Int      @id @default(autoincrement())
-  nome          String
-  email         String   @unique
-  senha         String   // Lembre-se de encriptar (bcrypt)
-  tipo          String   // 'ADMIN', 'PROFESSOR'
-  preferencias  Json?    // Para guardar as preferências da TelaAlterarSenha
-  aulas         Aula[]
-  solicitacoes  Solicitacao[]
+  id           Int           @id @default(autoincrement())
+  nome         String
+  email        String        @unique
+  senha        String
+  tipo         String
+  preferencias Json?
+  aulas        Aula[]
+  solicitacoes Solicitacao[]
 }
 
 model UC {
-  id      Int      @id @default(autoincrement())
-  nome    String
-  cor     String   // ex: "laranja", "azul"
-  aulas   Aula[]
-  turmas  Turma[]
+  id     Int     @id @default(autoincrement())
+  nome   String
+  cor    String  @default("laranja")
+  aulas  Aula[]
+  turmas Turma[]
 }
 
 model Sala {
-  id           Int     @id @default(autoincrement())
-  nome         String  // ex: "Sala 301A"
-  capacidade   Int
-  recursos     String? // ex: "Projetor, Ar condicionado"
-  aulas        Aula[]
+  id         Int    @id @default(autoincrement())
+  nome       String
+  capacidade Int
+  aulas      Aula[]
 }
 
 model Turma {
-  id      Int    @id @default(autoincrement())
-  nome    String // ex: "ADS - 1º Sem (A)"
-  ucs     UC[]
+  id   Int    @id @default(autoincrement())
+  nome String
+  ucs  UC[]
 }
 
 model Aula {
   id          Int      @id @default(autoincrement())
-  diaSemana   String   // "Segunda-feira"
-  horarioInicio DateTime
-  horarioFim    DateTime
+  diaSemana   String
+  horario     String
   
   professorId Int
   professor   Usuario @relation(fields: [professorId], references: [id])
@@ -53,9 +60,8 @@ model Solicitacao {
   id          Int      @id @default(autoincrement())
   titulo      String
   descricao   String
-  tipo        String   // "escala", "ucs", "salas"
-  status      String   @default("pendente") // "pendente", "resolvido"
-  dataCriacao DateTime @default(now())
+  tipo        String
+  status      String   @default("pendente")
   
   usuarioId   Int
   usuario     Usuario  @relation(fields: [usuarioId], references: [id])
