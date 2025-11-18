@@ -1,82 +1,19 @@
 import React, { useState } from "react";
 import styles from "./TelaRelatorios.module.css";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
-
-const mockSalas = [
-  {
-    id: 1,
-    nome: "Sala 01",
-    capacidade: 40,
-    disponibilidade: [
-      { dia: "Domingo", disponivel: false },
-      { dia: "Segunda", disponivel: true },
-      { dia: "Terça", disponivel: true },
-      { dia: "Quarta", disponivel: false },
-      { dia: "Quinta", disponivel: true },
-      { dia: "Sexta", disponivel: true },
-      { dia: "Sábado", disponivel: false },
-    ],
-  },
-  {
-    id: 2,
-    nome: "Sala 02",
-    capacidade: 35,
-    disponibilidade: [
-      { dia: "Domingo", disponivel: false },
-      { dia: "Segunda", disponivel: true },
-      { dia: "Terça", disponivel: false },
-      { dia: "Quarta", disponivel: true },
-      { dia: "Quinta", disponivel: true },
-      { dia: "Sexta", disponivel: true },
-      { dia: "Sábado", disponivel: false },
-    ],
-  },
-  {
-    id: 3,
-    nome: "Lab Química",
-    capacidade: 25,
-    disponibilidade: [
-      { dia: "Domingo", disponivel: false },
-      { dia: "Segunda", disponivel: true },
-      { dia: "Terça", disponivel: true },
-      { dia: "Quarta", disponivel: true },
-      { dia: "Quinta", disponivel: false },
-      { dia: "Sexta", disponivel: false },
-      { dia: "Sábado", disponivel: false },
-    ],
-  },
-];
-
-const mockUCs = [
-  {
-    id: 1,
-    nome: "Física",
-    turmas: ["2º Ano - A", "1º Ano - A", "2º Ano - B", "3º Ano - A"],
-  },
-  {
-    id: 2,
-    nome: "Matemática",
-    turmas: ["6º Ano - C", "9º Ano - A", "9º Ano - B", "8º Ano - B", "7º Ano - C"],
-  },
-  {
-    id: 3,
-    nome: "Química",
-    turmas: ["3º Ano - A", "2º Ano - B"],
-  },
-];
+import { mockSalas, mockUCs } from "../../data/mockData";
 
 type ActiveTab = "salas" | "ucs" | null;
 
 export function TelaRelatorios() {
   const [activeTab, setActiveTab] = useState<ActiveTab>(null);
-  
   const [salaSelecionada, setSalaSelecionada] = useState(mockSalas[0]);
 
   const renderContent = () => {
     switch (activeTab) {
       case "salas":
         return (
-          <div className={styles.scrollWrapper}>
+          <div key="salas" className={`${styles.scrollWrapper} ${styles.animatedContent}`}>
             {mockSalas.map((sala) => (
               <div key={sala.id} className={styles.contentCard}>
                 <h3 className={styles.cardTitle}>{sala.nome}</h3>
@@ -101,7 +38,7 @@ export function TelaRelatorios() {
 
       case "ucs":
         return (
-          <div className={styles.scrollWrapper}>
+          <div key="ucs" className={`${styles.scrollWrapper} ${styles.animatedContent}`}>
             {mockUCs.map((uc) => (
               <div key={uc.id} className={styles.contentCard}>
                 <h3 className={styles.cardTitle}>{uc.nome}</h3>
@@ -120,7 +57,7 @@ export function TelaRelatorios() {
 
       default:
         return (
-          <div className={styles.placeholder}>
+          <div key="default" className={`${styles.placeholder} ${styles.animatedContent}`}>
             <HeroLogo />
           </div>
         );
