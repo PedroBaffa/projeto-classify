@@ -1,0 +1,310 @@
+.formContainer {
+  flex-grow: 1;
+  background-color: #fdfbf5;
+  border-radius: 8px;
+  border: 1px solid #f0eae0;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  animation: fadeIn 0.5s ease; 
+}
+
+.formHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f0eae0;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.formTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.backButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #aaa;
+  background: #f0f0f0;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.backButton:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dropdown {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  flex-grow: 1;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23555'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 10px 10px;
+  padding-right: 40px; 
+}
+
+.formBody {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr; 
+  gap: 1.5rem;
+}
+
+.calendarColumn {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #f0eae0;
+}
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.calendarHeader span { font-size: 16px; }
+.calendarHeader div { font-size: 20px; cursor: pointer; }
+.calendarHeader div span { margin: 0 5px; }
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  justify-items: center;
+}
+
+.dayName {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #aaa;
+  text-align: center;
+  width: 32px; 
+  padding: 5px 0;
+}
+
+.day {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day:hover { background-color: #f0f0f0; }
+.dayAtual {
+  background-color: #e57734;
+  color: #fff;
+}
+.daySelecionado {
+  background-color: #f5c6aa;
+  color: #333;
+}
+.legend {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+.legend div { display: flex; align-items: center; gap: 5px; }
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dotAtual { background-color: #e57734; }
+.dotSelecionado { background-color: #f5c6aa; }
+
+.mainContentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pillsContainer {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #f0eae0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.pill {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  background-color: #f0f0f0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.descricaoTextarea {
+  flex-grow: 1; 
+  background-color: #fff;
+  border: 1px solid #f0eae0;
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  resize: vertical; 
+}
+
+.sendButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #e57734;
+  color: #fff;
+}
+.sendButton:hover { opacity: 0.9; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modalBackdrop {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; 
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fdfbf5; /* Fundo igual ao dos cartões */
+  border: 1px solid #f0eae0;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  animation: slideDownFadeIn 0.3s ease-out;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: flex-end; 
+}
+
+.modalCloseButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 700;
+  color: #aaa;
+  cursor: pointer;
+  line-height: 1;
+}
+.modalCloseButton:hover {
+  color: #333;
+}
+
+.modalBody {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  padding: 1rem 1.5rem;
+}
+
+.modalFooter {
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  display: flex; /* Para os dois botões */
+  gap: 1rem;
+}
+
+.modalConfirmButton,
+.modalCancelButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.modalConfirmButton {
+  background-color: #e57734; /* Laranja */
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+.modalConfirmButton:hover {
+  opacity: 0.9;
+}
+
+.modalCancelButton {
+  background-color: #f0f0f0; /* Cinza claro */
+  color: #555;
+  border: 1px solid #ddd;
+}
+.modalCancelButton:hover {
+  background-color: #e0e0e0;
+}
+
+/* --- (NOVO) KEYFRAMES PARA O MODAL --- */
+/* (Podes remover se já o tiveres no final deste ficheiro) */
+
+@keyframes slideDownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

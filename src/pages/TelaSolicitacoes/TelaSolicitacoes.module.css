@@ -262,3 +262,9 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+.createButtonActive {
+  background-color: #c9682c; /* Um tom de laranja mais escuro */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15); /* Efeito de "pressionado" */
+  transform: scale(0.98); /* Ligeiramente menor para parecer pressionado */
+}
