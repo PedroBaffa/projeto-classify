@@ -11,8 +11,8 @@ const mockUCs = [
   },
   {
     id: 2,
-    nome: "Física Experimental",
-    salas: ["Laboratório de Física (Bloco A)"],
+    nome: "Programação Experimental",
+    salas: ["Laboratório de Computação (Bloco A)"],
     dias: ["Terça-feira", "Quinta-feira"],
     cor: "azul",
   },
@@ -55,7 +55,7 @@ export function MinhasUCs() {
             <option value="noturno">Noturno</option>
           </select>
 
-          <button className={styles.actionButton}>Exportar</button>
+          <button className={styles.actionButton}>Procurar</button>
         </div>
       </div>
 
