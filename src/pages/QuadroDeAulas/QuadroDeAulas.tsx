@@ -1,5 +1,5 @@
 // src/pages/QuadroDeAulas/QuadroDeAulas.tsx
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./QuadroDeAulas.module.css";
 
 // --- DADOS FICTÍCIOS (MOCK) ---

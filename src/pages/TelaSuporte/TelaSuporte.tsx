@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../TelaAtuacao/TelaAtuacao.module.css'; 
 
 export function TelaSuporte() {

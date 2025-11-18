@@ -1,5 +1,4 @@
-import React from "react";
-import styles from "./MinhasUCs.module.css";
+import styles from "./MinhasUcs.module.css";
 
 const mockUCs = [
   {
