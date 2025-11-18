@@ -22,7 +22,7 @@ export function MinhasUCs() {
             <option value="vespertino">Vespertino</option>
             <option value="noturno">Noturno</option>
           </select>
-          <button className={styles.actionButton}>Exportar</button>
+          <button className={styles.actionButton}>Pesquisar</button>
         </div>
       </div>
 

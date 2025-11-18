@@ -107,7 +107,7 @@ export function FormCriarEscala({ onCancel }: FormProps) {
             </div>
             <textarea
               className={styles.descricaoTextarea}
-              placeholder="Escreva em detalhes a sua solicitação..."
+              placeholder="Escreva em detalhes sobre sua solicitação..."
               rows={10} 
             />
             <button 
