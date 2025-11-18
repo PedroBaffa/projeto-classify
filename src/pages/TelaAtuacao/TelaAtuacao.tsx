@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './TelaAtuacao.module.css'; 
 
 export function TelaAtuacao() {

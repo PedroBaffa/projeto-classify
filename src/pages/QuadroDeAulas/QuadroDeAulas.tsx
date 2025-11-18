@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// src/pages/QuadroDeAulas/QuadroDeAulas.tsx
+import { useState } from "react";
 import styles from "./QuadroDeAulas.module.css";
 import { weekData } from "../../data/mockData";
 export function QuadroDeAulas() {

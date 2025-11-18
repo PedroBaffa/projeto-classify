@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./TelaAlterarSenha.module.css";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
 import { Step1_Senha } from "./components/Step1_Senha";
