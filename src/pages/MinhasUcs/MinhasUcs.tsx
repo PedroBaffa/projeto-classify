@@ -1,17 +1,13 @@
-// src/pages/MinhasUCs/MinhasUCs.tsx
 import React from "react";
 import styles from "./MinhasUCs.module.css";
-// NOVO: Importa os dados centralizados
 import { mockUCs } from "../../data/mockData"; 
 
 export function MinhasUCs() {
   return (
     <div className={styles.container}>
       
-      {/* --- 1. BARRA DE TÍTULO E CONTROLOS --- */}
       <div className={styles.headerBar}>
         <h1 className={styles.titulo}>Minhas Unidades Curriculares</h1>
-        {/* ... (O resto da barra de controlos não muda) ... */}
         <div className={styles.controlsContainer}>
           <div className={styles.searchWrapper}>
             <input
