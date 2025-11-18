@@ -1,0 +1,264 @@
+.pageContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  max-height: 75vh;
+  gap: 1.5rem;
+}
+
+.sidebar {
+  flex-basis: 250px;
+  flex-shrink: 0;
+  background-color: #fdfbf5;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #f0eae0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.titulo {
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.createButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+  background-color: #e57734;
+  color: #fff;
+}
+.createButton:hover {
+  opacity: 0.9;
+}
+
+.requestList {
+  flex-basis: 300px;
+  flex-shrink: 0;
+  background-color: #fdfbf5;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #f0eae0;
+  display: flex;
+  flex-direction: column;
+}
+
+.listTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.listWrapper {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.requestButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.buttonPendente {
+  background-color: #e57734;
+  border-color: #e57734;
+  color: #fff;
+}
+.buttonPendente:hover {
+  opacity: 0.9;
+}
+
+.buttonResolvido {
+  background-color: #f0f0f0;
+  border-color: #ddd;
+  color: #aaa;
+}
+.buttonResolvido:hover {
+  background-color: #e0e0e0;
+}
+
+.buttonActive {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.removeButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  background-color: #e57734;
+  color: #fff;
+  opacity: 0.7;
+}
+
+.contentArea {
+  flex-grow: 1;
+  background-color: #fdfbf5;
+  border-radius: 8px;
+  border: 1px solid #f0eae0;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideDownFadeIn 0.5s ease-out;
+}
+
+.placeholder {
+  transform: scale(0.8);
+  opacity: 0.6;
+}
+
+.detailBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.detailTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+.detailDescription {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.detailActionButton, .detailRemoveButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #e57734;
+  color: #fff;
+}
+.detailRemoveButton {
+  background-color: #c0392b;
+}
+.modalBackdrop {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; 
+  animation: fadeIn 0.3s ease; 
+}
+
+.modalContent {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fdfbf5; 
+  border: 1px solid #f0eae0;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  animation: slideDownFadeIn 0.3s ease-out; 
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: flex-end; 
+}
+
+.modalCloseButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 700;
+  color: #aaa;
+  cursor: pointer;
+  line-height: 1;
+}
+.modalCloseButton:hover {
+  color: #333;
+}
+
+.modalBody {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  padding: 1rem 1.5rem;
+}
+
+.modalFooter {
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+}
+
+.modalConfirmButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #e57734; 
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+.modalConfirmButton:hover {
+  opacity: 0.9;
+}
+
+
+@keyframes slideDownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
