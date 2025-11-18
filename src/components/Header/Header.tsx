@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "../Button/Button";
 import styles from "./Header.module.css";
 import logo from "../../assets/Logo.png";

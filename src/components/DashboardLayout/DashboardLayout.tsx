@@ -1,4 +1,3 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styles from './DashboardLayout.module.css';
 import { AppHeader } from '../AppHeader/AppHeader';

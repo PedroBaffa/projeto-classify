@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
 import styles from "./TelaCadastro.module.css";
