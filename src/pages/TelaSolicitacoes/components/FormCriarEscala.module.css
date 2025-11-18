@@ -224,7 +224,7 @@
 .modalContent {
   width: 100%;
   max-width: 400px;
-  background-color: #fdfbf5; /* Fundo igual ao dos cartões */
+  background-color: #fdfbf5;
   border: 1px solid #f0eae0;
   border-radius: 12px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -261,7 +261,7 @@
 
 .modalFooter {
   padding: 1rem 1.5rem 1.5rem 1.5rem;
-  display: flex; /* Para os dois botões */
+  display: flex;
   gap: 1rem;
 }
 
@@ -278,7 +278,7 @@
 }
 
 .modalConfirmButton {
-  background-color: #e57734; /* Laranja */
+  background-color: #e57734;
   color: #fff;
   transition: opacity 0.2s ease;
 }
@@ -287,16 +287,13 @@
 }
 
 .modalCancelButton {
-  background-color: #f0f0f0; /* Cinza claro */
+  background-color: #f0f0f0;
   color: #555;
   border: 1px solid #ddd;
 }
 .modalCancelButton:hover {
   background-color: #e0e0e0;
 }
-
-/* --- (NOVO) KEYFRAMES PARA O MODAL --- */
-/* (Podes remover se já o tiveres no final deste ficheiro) */
 
 @keyframes slideDownFadeIn {
   from {
