@@ -1,28 +1,42 @@
 import { useState } from "react";
 import styles from "./TelaSolicitacaoClasse.module.css";
-import { mockUCs } from "../../../data/mockData";
+import { useMockData } from "../../../hooks/useMockData";
 
-const mockClasses = [...new Set(mockUCs.flatMap((uc) => uc.turmas))];
+interface UC {
+  id: number;
+  nome: string;
+  turmas: string[];
+  salas?: string[];
+  dias?: string[];
+  cor?: string;
+  periodos?: string[];
+}
 
-const mockAssignments: { [key: string]: number[] } = {
-  [mockClasses[0]]: [1, 4],
-  [mockClasses[1]]: [1],
-  [mockClasses[2]]: [2, 3, 4],
-  [mockClasses[3]]: [3],
-};
+ 
+const defaultAssignments: { [key: string]: number[] } = {};
 
 interface FormProps {
   onCancel: () => void;
 }
 
 export function TelaSolicitacaoClasse({ onCancel }: FormProps) {
-  const [selectedClassView, setSelectedClassView] = useState(mockClasses[2]);
+  const { data } = useMockData();
+  const ucsState: UC[] = Array.isArray(data.ucs) ? data.ucs : [];
+  const mockClasses: string[] = [...new Set(ucsState.flatMap((uc: UC) => Array.isArray(uc.turmas) ? uc.turmas : []))];
+  const mockAssignments: { [key: string]: number[] } =
+    data && typeof data.assignments === "object" && data.assignments !== null
+      ? (data.assignments as { [key: string]: number[] })
+      : Object.keys(defaultAssignments).length
+      ? defaultAssignments
+      : {};
 
-  const [selectedClassEdit, setSelectedClassEdit] = useState(mockClasses[2]);
-  const [selectedUCEdit, setSelectedUCEdit] = useState(mockUCs[0].id);
+  const [selectedClassView, setSelectedClassView] = useState<string>(mockClasses[0] ?? "");
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalAction, setModalAction] = useState("");
+  const [selectedClassEdit, setSelectedClassEdit] = useState<string>(mockClasses[0] ?? "");
+  const [selectedUCEdit, setSelectedUCEdit] = useState<number>(ucsState[0]?.id ?? 0);
+
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalAction, setModalAction] = useState<string>("");
 
   const handleOpenModal = (action: string) => {
     setModalAction(action);
@@ -43,10 +57,10 @@ export function TelaSolicitacaoClasse({ onCancel }: FormProps) {
     onCancel();
   };
 
-  const ucsDaClasse =
-    mockAssignments[selectedClassView]?.map((ucId) =>
-      mockUCs.find((uc) => uc.id === ucId)
-    ) || [];
+  const ucsDaClasse: UC[] =
+    (mockAssignments[selectedClassView] || []).map((ucId: number) =>
+      ucsState.find((uc: UC) => uc.id === ucId) as UC
+    ).filter(Boolean) || [];
 
   return (
     <>
@@ -68,7 +82,7 @@ export function TelaSolicitacaoClasse({ onCancel }: FormProps) {
                 value={selectedClassView}
                 onChange={(e) => setSelectedClassView(e.target.value)}
               >
-                {mockClasses.map((classe, index) => (
+                {mockClasses.map((classe: string, index: number) => (
                   <option key={index} value={classe}>
                     {classe}
                   </option>
@@ -78,7 +92,7 @@ export function TelaSolicitacaoClasse({ onCancel }: FormProps) {
             <div className={styles.inputGroup}>
               <label>Assinado para as UCs:</label>
               <div className={styles.ucListBox}>
-                {ucsDaClasse.map((uc) =>
+                {ucsDaClasse.map((uc: UC) =>
                   uc ? (
                     <span key={uc.id} className={styles.pill}>
                       {uc.nome}
@@ -102,7 +116,7 @@ export function TelaSolicitacaoClasse({ onCancel }: FormProps) {
                 value={selectedClassEdit}
                 onChange={(e) => setSelectedClassEdit(e.target.value)}
               >
-                {mockClasses.map((classe, index) => (
+                {mockClasses.map((classe: string, index: number) => (
                   <option key={index} value={classe}>
                     {classe}
                   </option>
@@ -117,7 +131,7 @@ export function TelaSolicitacaoClasse({ onCancel }: FormProps) {
                 value={selectedUCEdit}
                 onChange={(e) => setSelectedUCEdit(Number(e.target.value))}
               >
-                {mockUCs.map((uc) => (
+                {ucsState.map((uc: UC) => (
                   <option key={uc.id} value={uc.id}>
                     {uc.nome}
                   </option>

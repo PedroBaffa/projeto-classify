@@ -98,6 +98,20 @@
   margin: 0 5px;
 }
 
+.navButton {
+  background-color: #f0f0f0;
+  border: 1px solid transparent;
+  color: #333;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.navButton:hover {
+  background-color: #eaf0ef;
+  border-color: rgba(0,0,0,0.06);
+}
+
 .calendarGrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -136,9 +150,23 @@
   background-color: #e57734;
   color: #fff;
 }
+.dayHasClass {
+  background-color: #ff8a00;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(255,138,0,0.2);
+}
 .daySelecionado {
   background-color: #f5c6aa;
   color: #333;
+}
+
+.smallPill {
+  margin-top: 2px;
+  font-size: 9px;
+  background: rgba(255,255,255,0.12);
+  padding: 1px 4px;
+  border-radius: 4px;
+  color: #fff;
 }
 .legend {
   display: flex;

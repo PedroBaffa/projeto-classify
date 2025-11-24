@@ -1,6 +1,24 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import styles from "./TelaSolicitacaoSala.module.css";
-import { mockSalas, mockUCs } from "../../../data/mockData";
+import { useMockData } from "../../../hooks/useMockData";
+
+interface UC {
+  id: number;
+  nome: string;
+  turmas: string[];
+  salas?: string[];
+  dias?: string[];
+  cor?: string;
+  periodos?: string[];
+}
+
+interface Sala {
+  id: number;
+  nome: string;
+  capacidade: number;
+  disponibilidade: { dia: string; disponivel: boolean }[];
+}
 
 const mockReservas = [
   {
@@ -32,27 +50,47 @@ const mockReservas = [
     professor: "Prof. Joaquim",
   },
 ];
-const mockClasses = [...new Set(mockUCs.flatMap((uc) => uc.turmas))];
 const mockHorarios = ["Manhã", "Tarde", "Noite"];
+
+ 
 
 interface FormProps {
   onCancel: () => void;
 }
 
 export function TelaSolicitacaoSala({ onCancel }: FormProps) {
-  const [selectedSalaView, setSelectedSalaView] = useState(mockSalas[1].id);
+  const { data } = useMockData();
+  const ucsState: UC[] = Array.isArray(data?.ucs) ? data.ucs : [];
+  const salasState: Sala[] = Array.isArray(data?.salas) ? data.salas : [];
+
+  const mockClasses: string[] = [...new Set((ucsState.flatMap((uc: UC) => Array.isArray(uc.turmas) ? uc.turmas : [])) as string[])];
+
+  const [selectedSalaView, setSelectedSalaView] = useState<number>(0);
   const [selectedReservationId, setSelectedReservationId] = useState<number | null>(3);
 
-  const [salaParaAdicionar, setSalaParaAdicionar] = useState(mockSalas[0].id);
-  const [classeParaAdicionar, setClasseParaAdicionar] = useState(mockClasses[2]);
-  const [horarioParaAdicionar, setHorarioParaAdicionar] = useState(mockHorarios[1]);
-
-  const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
-  const filteredReservas = mockReservas.filter(
-    (r) => r.salaId === selectedSalaView
+  const [salaParaAdicionar, setSalaParaAdicionar] = useState<number>(0);
+  const [classeParaAdicionar, setClasseParaAdicionar] = useState<string>(""
   );
+  const [horarioParaAdicionar, setHorarioParaAdicionar] = useState<string>(""
+  );
+
+  const [isRemoveModalOpen, setIsRemoveModalOpen] = useState<boolean>(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
+
+  const filteredReservas = mockReservas.filter((r) => r.salaId === selectedSalaView);
+
+  useEffect(() => {
+    if (salasState.length > 0) {
+      setSelectedSalaView((prev) => (prev || salasState[0]?.id));
+      setSalaParaAdicionar((prev) => (prev || salasState[0]?.id));
+    }
+    if (mockClasses.length > 0 && !classeParaAdicionar) {
+      setClasseParaAdicionar(mockClasses[0]);
+    }
+    if (mockHorarios.length > 0 && !horarioParaAdicionar) {
+      setHorarioParaAdicionar(mockHorarios[0]);
+    }
+  }, [salasState, mockClasses]);
 
   const handleOpenAddModal = () => setIsAddModalOpen(true);
   const handleCloseAddModal = () => setIsAddModalOpen(false);
@@ -100,7 +138,7 @@ export function TelaSolicitacaoSala({ onCancel }: FormProps) {
                   setSelectedReservationId(null);
                 }}
               >
-                {mockSalas.map((sala) => (
+                {salasState.map((sala: Sala) => (
                   <option key={sala.id} value={sala.id}>
                     {sala.nome}
                   </option>
@@ -146,7 +184,7 @@ export function TelaSolicitacaoSala({ onCancel }: FormProps) {
                   value={salaParaAdicionar}
                   onChange={(e) => setSalaParaAdicionar(Number(e.target.value))}
                 >
-                  {mockSalas.map((sala) => (
+                  {salasState.map((sala: Sala) => (
                     <option key={sala.id} value={sala.id}>{sala.nome}</option>
                   ))}
                 </select>
@@ -159,7 +197,7 @@ export function TelaSolicitacaoSala({ onCancel }: FormProps) {
                   value={classeParaAdicionar}
                   onChange={(e) => setClasseParaAdicionar(e.target.value)}
                 >
-                  {mockClasses.map((classe, index) => (
+                  {mockClasses.map((classe: string, index: number) => (
                     <option key={index} value={classe}>{classe}</option>
                   ))}
                 </select>
@@ -172,7 +210,7 @@ export function TelaSolicitacaoSala({ onCancel }: FormProps) {
                   value={horarioParaAdicionar}
                   onChange={(e) => setHorarioParaAdicionar(e.target.value)}
                 >
-                  {mockHorarios.map((horario, index) => (
+                  {mockHorarios.map((horario: string, index: number) => (
                     <option key={index} value={horario}>{horario}</option>
                   ))}
                 </select>

@@ -83,6 +83,33 @@
   cursor: pointer;
 }
 
+.arrowButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid #f0eae0;
+  background-color: #fff;
+  color: #e57734;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transition: background-color 0.15s ease, transform 0.08s ease;
+}
+.arrowButton:hover {
+  background-color: #fdf0d5;
+  transform: translateY(-1px);
+}
+.arrowButton:active {
+  transform: translateY(0);
+}
+.arrowButton:focus {
+  outline: 3px solid rgba(229,119,52,0.12);
+}
+
 .infoBox p {
   font-family: "Poppins", sans-serif;
   font-size: 14px;

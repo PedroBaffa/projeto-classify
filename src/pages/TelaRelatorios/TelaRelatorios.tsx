@@ -1,26 +1,53 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./TelaRelatorios.module.css";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
-import { mockSalas, mockUCs } from "../../data/mockData";
 
 type ActiveTab = "salas" | "ucs" | null;
 
 export function TelaRelatorios() {
   const [activeTab, setActiveTab] = useState<ActiveTab>(null);
-  const [salaSelecionada] = useState(mockSalas[0]);
+  const [salas, setSalas] = useState<any[]>([]);
+  const [ucs, setUcs] = useState<any[]>([]);
+  const [selectedSalaIndex, setSelectedSalaIndex] = useState(0);
+
+  useEffect(() => {
+    fetch('/api/mock-data')
+      .then((r) => r.json())
+      .then((data) => {
+        if (data) {
+          setSalas(Array.isArray(data.salas) ? data.salas : []);
+          setUcs(Array.isArray(data.ucs) ? data.ucs : []);
+          setSelectedSalaIndex(0);
+        }
+      })
+      .catch(() => {
+        setSalas([]);
+        setUcs([]);
+      });
+  }, []);
+
+  const prevSala = () => {
+    if (salas.length === 0) return;
+    setSelectedSalaIndex((i) => (i - 1 + salas.length) % salas.length);
+  };
+
+  const nextSala = () => {
+    if (salas.length === 0) return;
+    setSelectedSalaIndex((i) => (i + 1) % salas.length);
+  };
 
   const renderContent = () => {
     switch (activeTab) {
       case "salas":
         return (
           <div key="salas" className={`${styles.scrollWrapper} ${styles.animatedContent}`}>
-            {mockSalas.map((sala) => (
+            {salas.map((sala) => (
               <div key={sala.id} className={styles.contentCard}>
                 <h3 className={styles.cardTitle}>{sala.nome}</h3>
                 <div className={styles.divider}></div>
                 <div className={styles.availabilityList}>
                   <p>Disponibilidade</p>
-                  {sala.disponibilidade.map((dia) => (
+                  {sala.disponibilidade.map((dia: any) => (
                     <div
                       key={dia.dia}
                       className={`${styles.diaPill} ${
@@ -39,12 +66,12 @@ export function TelaRelatorios() {
       case "ucs":
         return (
           <div key="ucs" className={`${styles.scrollWrapper} ${styles.animatedContent}`}>
-            {mockUCs.map((uc) => (
+            {ucs.map((uc) => (
               <div key={uc.id} className={styles.contentCard}>
                 <h3 className={styles.cardTitle}>{uc.nome}</h3>
                 <div className={styles.divider}></div>
                 <div className={styles.turmaList}>
-                  {uc.turmas.map((turma, index) => (
+                  {uc.turmas.map((turma: any, index: number) => (
                     <div key={index} className={styles.turmaPill}>
                       {turma}
                     </div>
@@ -63,6 +90,8 @@ export function TelaRelatorios() {
         );
     }
   };
+
+  const selectedSala = salas[selectedSalaIndex] ?? null;
 
   return (
     <div className={styles.pageContainer}>
@@ -83,15 +112,15 @@ export function TelaRelatorios() {
           UCs
         </button>
 
-        {activeTab === "salas" && (
+        {activeTab === "salas" && selectedSala && (
           <div className={styles.infoBox}>
             <div className={styles.infoNav}>
-              <span>{'<'}</span>
-              <span>{salaSelecionada.nome}</span>
-              <span>{'>'}</span>
+              <button onClick={prevSala} className={styles.arrowButton} aria-label="Anterior">{'<'}</button>
+              <span>{selectedSala.nome}</span>
+              <button onClick={nextSala} className={styles.arrowButton} aria-label="Próxima">{'>'}</button>
             </div>
             <p>
-              Capacidade: <strong>{salaSelecionada.capacidade}</strong>
+              Capacidade: <strong>{selectedSala.capacidade}</strong>
             </p>
           </div>
         )}

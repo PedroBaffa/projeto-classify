@@ -1,11 +1,11 @@
-// src/pages/TelaLogin/TelaLogin.tsx
+ 
 
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
 import styles from "./TelaLogin.module.css";
 
-// Importa os ícones da animação
+ 
 import capelo1 from "../../assets/icons/capelo1.svg";
 import livro1 from "../../assets/icons/livro1.svg";
 import teacher1 from "../../assets/icons/teacher1.svg";
@@ -33,6 +33,8 @@ export function TelaLogin() {
       });
       const data = await response.json();
       if (response.ok && data.success) {
+        
+        try { localStorage.setItem('userEmail', data.user.email); } catch {}
         navigate("/primeiro-login");
       } else {
         setError(data?.message || "Usuário ou senha inválidos.");
@@ -44,11 +46,29 @@ export function TelaLogin() {
     }
   }
 
+  
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const resp = await fetch('/api/mock-data');
+        if (!resp.ok) return;
+        const data = await resp.json();
+        const firstUser = data?.users?.[0];
+        if (mounted && firstUser) {
+          setEmail(firstUser.email || '');
+          setSenha(firstUser.senha || '');
+        }
+      } catch (err) {
+        
+      }
+    })();
+    return () => { mounted = false; };
+  }, []);
+
   return (
     <div className={styles.loginPage}>
-      {/* --- PAINEL ESQUERDO (Com Animação) --- */}
       <div className={styles.leftPanel}>
-        {/* Animação de fundo */}
         <div className={styles.fallingItemsContainer}>
           <img
             src={capelo1}
@@ -102,13 +122,12 @@ export function TelaLogin() {
           />
         </div>
 
-        {/* Logo (na frente da animação) */}
+        
         <div className={styles.heroWrapper}>
           <HeroLogo />
         </div>
       </div>
 
-      {/* --- PAINEL DIREITO (Formulário) --- */}
       <div className={styles.rightPanel}>
         <h1 className={styles.title}>Bem-vindo!</h1>
         <p className={styles.subtitle}>É bom ter você aqui de novo.</p>

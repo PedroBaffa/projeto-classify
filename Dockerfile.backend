@@ -1,0 +1,16 @@
+FROM node:24-alpine
+
+WORKDIR /usr/src/app
+
+# Install only production dependencies for the backend
+COPY package.json package-lock.json* ./
+RUN npm ci --omit=dev
+
+# Copy only the API sources
+COPY src/api ./src/api
+# Copy mock data so the backend can read/write it
+COPY src/data ./src/data
+
+EXPOSE 2985
+
+CMD ["node", "./src/api/server.js"]
