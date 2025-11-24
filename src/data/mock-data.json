@@ -1,0 +1,208 @@
+{
+  "users": [
+    {
+      "email": "prof@teste.com",
+      "senha": "Ronaldo123#",
+      "nome": "Professor Teste",
+      "preferencias": {
+        "matutino": false,
+        "vespertino": true,
+        "noturno": true,
+        "todos": false
+      },
+      "unidades": [
+        "Física",
+        "Cálculo 1"
+      ]
+    }
+  ],
+  "weekData": [
+    {
+      "day": "Segunda-feira",
+      "status": "normal",
+      "aulaBlock": "Manhã 08:00-12:00",
+      "pills": [
+        {
+          "id": 1,
+          "text": "ADS - 1º Sem (A)",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "day": "Terça-feira",
+      "status": "normal",
+      "aulaBlock": "Tarde 13:00-17:00",
+      "pills": [
+        {
+          "id": 2,
+          "text": "Eng. Comp - 2º Sem (A)",
+          "type": "normal"
+        }
+      ]
+    },
+    {
+      "day": "Quarta-feira",
+      "status": "normal",
+      "aulaBlock": "Manhã 08:00-12:00",
+      "pills": []
+    },
+    {
+      "day": "Quinta-feira",
+      "status": "empty",
+      "aulaBlock": null,
+      "pills": []
+    },
+    {
+      "day": "Sexta-feira",
+      "status": "normal",
+      "aulaBlock": "Noite 19:00-22:30",
+      "pills": []
+    }
+  ],
+  "ucs": [
+    {
+      "id": 1,
+      "nome": "Cálculo 1",
+      "salas": [
+        "Sala 301A",
+        "Lab 1 (Bloco B)"
+      ],
+      "dias": [
+        "Segunda-feira",
+        "Quarta-feira"
+      ],
+      "cor": "#ff8a00",
+      "turmas": [
+        "ADS - 1º Sem (A)"
+      ],
+      "periodos": [
+        "matutino"
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Algoritmos e Estrutura de Dados",
+      "salas": [
+        "Sala 205B"
+      ],
+      "dias": [
+        "Terça-feira",
+        "Sexta-feira"
+      ],
+      "cor": "#007bff",
+      "turmas": [
+        "Eng. Comp - 2º Sem (A)",
+        "Ciência da Comp. - 3º Sem"
+      ],
+      "periodos": [
+        "vespertino"
+      ]
+    }
+  ],
+  "salas": [
+    {
+      "id": 1,
+      "nome": "Sala 205B",
+      "capacidade": 30,
+      "disponibilidade": [
+        {
+          "dia": "Segunda-feira",
+          "disponivel": true
+        },
+        {
+          "dia": "Terça-feira",
+          "disponivel": true
+        },
+        {
+          "dia": "Quarta-feira",
+          "disponivel": true
+        },
+        {
+          "dia": "Quinta-feira",
+          "disponivel": true
+        },
+        {
+          "dia": "Sexta-feira",
+          "disponivel": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Lab Computação (Bloco A)",
+      "capacidade": 20,
+      "disponibilidade": [
+        {
+          "dia": "Segunda-feira",
+          "disponivel": false
+        },
+        {
+          "dia": "Terça-feira",
+          "disponivel": true
+        },
+        {
+          "dia": "Quarta-feira",
+          "disponivel": true
+        },
+        {
+          "dia": "Quinta-feira",
+          "disponivel": true
+        },
+        {
+          "dia": "Sexta-feira",
+          "disponivel": true
+        }
+      ]
+    }
+  ],
+  "instituicoes": [
+    "USJT - Santana",
+    "UNINOVE - Paulista",
+    "Mackenzie - Consolação"
+  ],
+  "solicitacoes": [
+    {
+      "id": 1,
+      "tipo": "escala",
+      "titulo": "Alteração de escala (Manhã)",
+      "status": "resolvido",
+      "descricao": "Troca aprovada pela coordenação."
+    },
+    {
+      "id": 2,
+      "tipo": "ucs",
+      "titulo": "Adicionar UC de IA Aplicada",
+      "status": "pendente",
+      "descricao": "Interessado em lecionar IA Aplicada."
+    },
+    {
+      "id": 3,
+      "tipo": "salas",
+      "titulo": "Problema no projetor da Sala 205B",
+      "status": "resolvido",
+      "descricao": "Projetor encaminhado para manutenção."
+    },
+    {
+      "id": 1763954541019,
+      "tipo": "escala",
+      "titulo": "Alteração de escala (tarde)",
+      "status": "resolvido",
+      "descricao": "Teste",
+      "ucId": 1,
+      "turma": "ADS - 1º Sem (A)",
+      "periodo": "tarde",
+      "datas": [],
+      "criadoEm": "2025-11-24T03:22:21.019Z"
+    }
+  ],
+  "assignments": {
+    "ADS - 1º Sem (A)": [
+      1
+    ],
+    "Eng. Comp - 2º Sem (A)": [
+      2
+    ]
+  },
+  "notes": "Full mock data used across pages; edit via /api/mock-data or directly here."
+}

@@ -1,7 +1,6 @@
-// src/pages/TelaAlterarSenha/components/Step1_Senha.tsx
+ 
 import React, { useState } from 'react';
 
-// Recebemos os estilos e a função para ir para o próximo passo
 interface Step1Props {
   styles: any;
   onContinue: () => void;
@@ -32,10 +31,16 @@ export function Step1_Senha({ styles, onContinue }: Step1Props) {
     }
 
     try {
-      const response = await fetch('/api/alterar-senha', {
-        method: 'POST',
+      const email = localStorage.getItem('userEmail');
+      if (!email) {
+        setError('Usuário não identificado. Faça login novamente.');
+        return;
+      }
+
+      const response = await fetch('/api/user', {
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ senha: novaSenha })
+        body: JSON.stringify({ email, senha: novaSenha })
       });
 
       if (!response.ok) {
@@ -45,7 +50,7 @@ export function Step1_Senha({ styles, onContinue }: Step1Props) {
       }
 
       onContinue(); // Vai para o próximo passo
-    } catch {
+    } catch (err) {
       setError('Erro de conexão. Tente novamente.');
     }
   };

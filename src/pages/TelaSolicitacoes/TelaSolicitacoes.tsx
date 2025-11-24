@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./TelaSolicitacoes.module.css";
-import { mockSolicitacoes } from "../../data/mockData";
 import { HeroLogo } from "../../components/HeroLogo/HeroLogo";
 import { FormCriarEscala } from "./components/FormCriarEscala"; 
 import { FormCriarUCs } from "./components/FormCriarUcs";
 import { TelaSolicitacaoSala } from "./components/TelaSolicitacaoSala"; 
 import { TelaSolicitacaoClasse } from "./components/TelaSolicitacaoClasse";
 
-type Solicitacao = (typeof mockSolicitacoes)[0];
+type Solicitacao = any;
 type ViewMode = 'list' | 'create';
 type FormType = 'escala' | 'ucs' | 'classes' | 'salas' | null;
 
 export function TelaSolicitacoes() {
   
   const [selectedRequest, setSelectedRequest] = useState<Solicitacao | null>(null);
+  const [solicitacoes, setSolicitacoes] = useState<Solicitacao[]>([]);
   const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [formType, setFormType] = useState<FormType>(null);
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
@@ -27,9 +27,26 @@ export function TelaSolicitacoes() {
     setIsRemoveModalOpen(false);
   };
   const handleConfirmRemove = () => {
-    console.log("Removendo solicitação:", selectedRequest?.id);
+    if (!selectedRequest) return;
+    const idToResolve = selectedRequest.id;
+    
+    setSolicitacoes((prev) => prev.map((s) => (s.id === idToResolve ? { ...s, status: 'resolvido' } : s)));
+    setSelectedRequest((prev: Solicitacao | null) => (prev ? { ...prev, status: 'resolvido' } : prev));
     handleCloseRemoveModal();
-    setSelectedRequest(null);
+
+    
+    (async () => {
+      try {
+        const resp = await fetch('/api/mock-data');
+        const data = await resp.json();
+        if (Array.isArray(data.solicitacoes)) {
+          data.solicitacoes = data.solicitacoes.map((s: any) => (s.id === idToResolve ? { ...s, status: 'resolvido' } : s));
+          await fetch('/api/mock-data', { method: 'PUT', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body: JSON.stringify(data) });
+        }
+      } catch (err) {
+        console.error('Erro ao marcar como resolvido (remove):', err);
+      }
+    })();
   };
 
   const handleOpenResolveModal = (e: React.MouseEvent) => {
@@ -40,9 +57,26 @@ export function TelaSolicitacoes() {
     setIsResolveModalOpen(false);
   };
   const handleConfirmResolve = () => {
-    console.log("Resolvendo solicitação:", selectedRequest?.id);
+    if (!selectedRequest) return;
+    const idToResolve = selectedRequest.id;
+    
+    setSolicitacoes((prev) => prev.map((s) => (s.id === idToResolve ? { ...s, status: 'resolvido' } : s)));
+    setSelectedRequest((prev: Solicitacao | null) => (prev ? { ...prev, status: 'resolvido' } : prev));
     handleCloseResolveModal();
-    setSelectedRequest(null);
+
+    
+    (async () => {
+      try {
+        const resp = await fetch('/api/mock-data');
+        const data = await resp.json();
+        if (Array.isArray(data.solicitacoes)) {
+          data.solicitacoes = data.solicitacoes.map((s: any) => (s.id === idToResolve ? { ...s, status: 'resolvido' } : s));
+          await fetch('/api/mock-data', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        }
+      } catch (err) {
+        console.error('Erro ao marcar como resolvido:', err);
+      }
+    })();
   };
 
   const handleShowForm = (type: FormType) => {
@@ -53,6 +87,24 @@ export function TelaSolicitacoes() {
     setViewMode('list');
     setFormType(null);
   };
+
+  useEffect(() => {
+    fetch('/api/mock-data')
+      .then((r) => r.json())
+      .then((data) => setSolicitacoes(Array.isArray(data.solicitacoes) ? data.solicitacoes : []))
+      .catch(() => setSolicitacoes([]));
+  }, []);
+
+  useEffect(() => {
+    function onCreated() {
+      fetch('/api/mock-data')
+        .then((r) => r.json())
+        .then((data) => setSolicitacoes(Array.isArray(data.solicitacoes) ? data.solicitacoes : []))
+        .catch(() => {});
+    }
+    window.addEventListener('solicitacaoCreated', onCreated as EventListener);
+    return () => window.removeEventListener('solicitacaoCreated', onCreated as EventListener);
+  }, []);
 
   const renderDetailContent = () => {
     if (!selectedRequest) {
@@ -91,7 +143,7 @@ export function TelaSolicitacoes() {
       <div className={styles.requestList}>
         <h2 className={styles.listTitle}>Pendentes</h2>
         <div className={styles.listWrapper}>
-          {mockSolicitacoes.map((item) => (
+          {solicitacoes.map((item) => (
             <button
               key={item.id}
               className={`
