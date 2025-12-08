@@ -1,6 +1,17 @@
 import { useState } from "react";
 import styles from "./FormCriarEscala.module.css";
-import { mockUCs } from "../../../data/mockData";
+import { useEffect } from "react";
+import { useMockData } from "../../../hooks/useMockData";
+
+interface UC {
+  id: number;
+  nome: string;
+  turmas: string[];
+  salas?: string[];
+  dias?: string[];
+  cor?: string;
+  periodos?: string[];
+}
 
 interface FormProps {
   onCancel: () => void; 
@@ -8,12 +19,74 @@ interface FormProps {
 
 export function FormCriarEscala({ onCancel }: FormProps) {
   
-  const [selectedUC, setSelectedUC] = useState(mockUCs[0].id);
-  const [selectedTurma, setSelectedTurma] = useState(mockUCs[0].turmas[0]);
-  const [selectedPeriodo, setSelectedPeriodo] = useState("tarde");
-  const [isSendModalOpen, setIsSendModalOpen] = useState(false);
-  const ucInfo = mockUCs.find((uc) => uc.id === selectedUC) || mockUCs[0];
-  const turmasDaUC = mockUCs.flatMap(uc => uc.turmas);
+  const [selectedUC, setSelectedUC] = useState<number>(0);
+  const [selectedTurma, setSelectedTurma] = useState<string>("");
+  const [selectedPeriodo, setSelectedPeriodo] = useState<string>("tarde");
+  const [isSendModalOpen, setIsSendModalOpen] = useState<boolean>(false);
+  const { data: mockData } = useMockData();
+  const [ucsState, setUcsState] = useState<UC[]>([]);
+  const [description, setDescription] = useState<string>("");
+  const [selectedDays, setSelectedDays] = useState<string[]>([]);
+  
+
+  useEffect(() => {
+    const list = Array.isArray(mockData.ucs) ? mockData.ucs : [];
+    setUcsState(list);
+    if (list.length > 0 && selectedUC === 0) {
+      setSelectedUC(list[0].id);
+      setSelectedTurma(list[0].turmas?.[0] ?? "");
+    }
+  }, [mockData]);
+
+  const ucInfo: UC = (ucsState.find((uc: UC) => uc.id === selectedUC) as UC) || (ucsState[0] as UC) || ({ id: 0, nome: '', turmas: [] } as UC);
+  const turmasDaUC: string[] = ucInfo?.turmas && Array.isArray(ucInfo.turmas) ? ucInfo.turmas : [];
+
+  const today = new Date();
+  const [displayYear, setDisplayYear] = useState<number>(today.getFullYear());
+  const [displayMonth, setDisplayMonth] = useState<number>(today.getMonth());
+
+  function buildMonthDays(yr: number, mth: number) {
+    const last = new Date(yr, mth + 1, 0);
+    const days: Date[] = [];
+    for (let d = 1; d <= last.getDate(); d++) {
+      days.push(new Date(yr, mth, d));
+    }
+    return days;
+  }
+
+  const monthDays = buildMonthDays(displayYear, displayMonth);
+
+  function prevMonth() {
+    setDisplayMonth((m) => {
+      if (m === 0) {
+        setDisplayYear((y) => y - 1);
+        return 11;
+      }
+      return m - 1;
+    });
+  }
+
+  function nextMonth() {
+    setDisplayMonth((m) => {
+      if (m === 11) {
+        setDisplayYear((y) => y + 1);
+        return 0;
+      }
+      return m + 1;
+    });
+  }
+
+  function weekdayName(date: Date) {
+    const names = ['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'];
+    return names[date.getDay()];
+  }
+
+  const classWeekdays = Array.isArray(ucInfo.dias) ? ucInfo.dias : [];
+
+  function toggleDay(d: Date) {
+    const key = d.toISOString().slice(0,10);
+    setSelectedDays((prev) => prev.includes(key) ? prev.filter(x => x !== key) : [...prev, key]);
+  }
 
   const handleOpenSendModal = () => {
     setIsSendModalOpen(true);
@@ -22,11 +95,38 @@ export function FormCriarEscala({ onCancel }: FormProps) {
     setIsSendModalOpen(false);
   };
   const handleConfirmSend = () => {
-    console.log("Enviando solicitação...");
-    
-    handleCloseSendModal();
-    
-    onCancel(); 
+    const titulo = `Alteração de escala (${selectedPeriodo})`;
+    const nova: any = {
+      id: Date.now(),
+      tipo: 'escala',
+      titulo,
+      status: 'pendente',
+      descricao: description || titulo,
+      ucId: selectedUC,
+      turma: selectedTurma,
+      periodo: selectedPeriodo,
+      datas: selectedDays,
+      criadoEm: new Date().toISOString()
+    };
+
+    (async () => {
+      try {
+        const resp = await fetch('/api/mock-data');
+        const data = await resp.json();
+        data.solicitacoes = Array.isArray(data.solicitacoes) ? data.solicitacoes : [];
+        data.solicitacoes.push(nova);
+        await fetch('/api/mock-data', { method: 'PUT', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body: JSON.stringify(data) });
+        try {
+          window.dispatchEvent(new CustomEvent('solicitacaoCreated', { detail: nova }));
+        } catch (e) {
+          // ignore if dispatch not available
+        }
+      } catch (err) {
+        console.error('Erro ao enviar solicitação:', err);
+      }
+      handleCloseSendModal();
+      onCancel();
+    })();
   };
   
 
@@ -44,9 +144,9 @@ export function FormCriarEscala({ onCancel }: FormProps) {
             value={selectedUC}
             onChange={(e) => setSelectedUC(Number(e.target.value))}
            >
-            {mockUCs.map((uc) => (
-              <option key={uc.id} value={uc.id}>{uc.nome}</option>
-            ))}
+             {ucsState.map((uc: UC) => (
+                <option key={uc.id} value={uc.id}>{uc.nome}</option>
+              ))}
            </select>
            <select 
             className={styles.dropdown}
@@ -62,7 +162,7 @@ export function FormCriarEscala({ onCancel }: FormProps) {
             value={selectedTurma}
             onChange={(e) => setSelectedTurma(e.target.value)}
            >
-            {turmasDaUC.map((turma, i) => (
+            {turmasDaUC.map((turma: string, i: number) => (
               <option key={i} value={turma}>{turma}</option>
             ))}
            </select>
@@ -72,26 +172,30 @@ export function FormCriarEscala({ onCancel }: FormProps) {
           
           <div className={styles.calendarColumn}>
             <div className={styles.calendarHeader}>
-              <span>2025</span> 
-              <div><span>{'<'}</span><span>{'>'}</span></div>
+              <span>{displayYear} - {displayMonth + 1}</span>
+              <div>
+                <button className={styles.navButton} onClick={prevMonth}>&lt;</button>
+                <button className={styles.navButton} onClick={nextMonth}>&gt;</button>
+              </div>
             </div>
             <div className={styles.calendarGrid}>
-              <div className={styles.dayName}>M</div><div className={styles.dayName}>T</div><div className={styles.dayName}>W</div><div className={styles.dayName}>T</div><div className={styles.dayName}>F</div><div className={styles.dayName}>S</div><div className={styles.dayName}>S</div>
-              <div className={styles.day}></div><div className={styles.day}></div><div className={styles.day}></div><div className={styles.day}></div>
-              <div className={styles.day}>1</div>
-              <div className={styles.day}>2</div><div className={styles.day}>3</div><div className={styles.day}>4</div>
-              <div className={`${styles.day} ${styles.dayAtual}`}>5</div>
-              <div className={styles.day}>6</div><div className={styles.day}>7</div><div className={styles.day}>8</div>
-              <div className={styles.day}>9</div><div className={styles.day}>10</div><div className={styles.day}>11</div>
-              <div className={`${styles.day} ${styles.daySelecionado}`}>12</div>
-              <div className={styles.day}>13</div><div className={styles.day}>14</div><div className={styles.day}>15</div>
-              <div className={styles.day}>16</div><div className={styles.day}>17</div>
-              <div className={`${styles.day} ${styles.daySelecionado}`}>18</div>
-              <div className={`${styles.day} ${styles.dayAtual}`}>19</div>
-              <div className={styles.day}>20</div><div className={styles.day}>21</div><div className={styles.day}>22</div>
-              <div className={styles.day}>23</div><div className={styles.day}>24</div>
-              <div className={`${styles.day} ${styles.daySelecionado}`}>25</div>
-              <div className={styles.day}>26</div><div className={styles.day}>27</div><div className={styles.day}>28</div><div className={styles.day}>29</div>
+              <div className={styles.dayName}>D</div><div className={styles.dayName}>S</div><div className={styles.dayName}>T</div><div className={styles.dayName}>Q</div><div className={styles.dayName}>Q</div><div className={styles.dayName}>S</div><div className={styles.dayName}>S</div>
+              {monthDays.map((d) => {
+                const key = d.toISOString().slice(0,10);
+                const isToday = key === today.toISOString().slice(0,10) && displayYear === today.getFullYear() && displayMonth === today.getMonth();
+                const isSelected = selectedDays.includes(key);
+                const hasClass = classWeekdays.includes(weekdayName(d));
+                const cls = [styles.day];
+                if (isToday) cls.push(styles.dayAtual);
+                if (isSelected) cls.push(styles.daySelecionado);
+                if (hasClass) cls.push(styles.dayHasClass);
+                return (
+                  <div key={key} className={cls.join(' ')} onClick={() => toggleDay(d)}>
+                    <div>{d.getDate()}</div>
+                    {hasClass && <div className={styles.smallPill}>{ucInfo.nome}</div>}
+                  </div>
+                );
+              })}
             </div>
             <div className={styles.legend}>
               <div><span className={`${styles.dot} ${styles.dotAtual}`}></span> Atual</div>
@@ -108,7 +212,9 @@ export function FormCriarEscala({ onCancel }: FormProps) {
             <textarea
               className={styles.descricaoTextarea}
               placeholder="Escreva em detalhes sobre sua solicitação..."
-              rows={10} 
+              rows={10}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
             <button 
               className={styles.sendButton} 

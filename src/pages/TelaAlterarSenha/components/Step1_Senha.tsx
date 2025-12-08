@@ -1,17 +1,58 @@
-// src/pages/TelaAlterarSenha/components/Step1_Senha.tsx
-import React from 'react';
+ 
+import React, { useState } from 'react';
 
-// Recebemos os estilos e a função para ir para o próximo passo
 interface Step1Props {
   styles: any;
   onContinue: () => void;
 }
 
 export function Step1_Senha({ styles, onContinue }: Step1Props) {
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Impede o recarregamento da página
-    onContinue(); // Chama a função para ir para a Etapa 2
+  const [novaSenha, setNovaSenha] = useState('');
+  const [confirmaSenha, setConfirmaSenha] = useState('');
+  const [error, setError] = useState('');
+
+  const validarSenha = (senha: string) => {
+    const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d.*\d.*\d)[A-Za-z\d!@#$%^&*]{7,}$/;
+    return regex.test(senha);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (!validarSenha(novaSenha)) {
+      setError('A senha não atende aos critérios especificados.');
+      return;
+    }
+
+    if (novaSenha !== confirmaSenha) {
+      setError('As senhas não correspondem.');
+      return;
+    }
+
+    try {
+      const email = localStorage.getItem('userEmail');
+      if (!email) {
+        setError('Usuário não identificado. Faça login novamente.');
+        return;
+      }
+
+      const response = await fetch('/api/user', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha: novaSenha })
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.message || 'Erro ao alterar a senha.');
+        return;
+      }
+
+      onContinue(); // Vai para o próximo passo
+    } catch (err) {
+      setError('Erro de conexão. Tente novamente.');
+    }
   };
 
   return (
@@ -24,13 +65,27 @@ export function Step1_Senha({ styles, onContinue }: Step1Props) {
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.inputGroup}>
           <label htmlFor="nova-senha">Nova senha:</label>
-          <input type="password" id="nova-senha" className={styles.formInput} />
+          <input
+            type="password"
+            id="nova-senha"
+            className={styles.formInput}
+            value={novaSenha}
+            onChange={(e) => setNovaSenha(e.target.value)}
+          />
         </div>
-        
+
         <div className={styles.inputGroup}>
           <label htmlFor="confirma-senha">Confirme sua nova senha:</label>
-          <input type="password" id="confirma-senha" className={styles.formInput} />
+          <input
+            type="password"
+            id="confirma-senha"
+            className={styles.formInput}
+            value={confirmaSenha}
+            onChange={(e) => setConfirmaSenha(e.target.value)}
+          />
         </div>
+
+        {error && <p className={styles.errorText}>{error}</p>}
 
         <p className={styles.constraintText}>
           *sua senha precisa conter pelo menos 7 letras, uma letra maiúscula, um caracter especial e 3 números

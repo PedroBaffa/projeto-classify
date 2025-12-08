@@ -1,15 +1,27 @@
 import { useState, useEffect } from "react";
 import styles from "./FormCriarUcs.module.css";
-import { mockUCs } from "../../../data/mockData";
+import { useMockData } from "../../../hooks/useMockData";
+
+interface UC {
+  id: number;
+  nome: string;
+  turmas: string[];
+  salas?: string[];
+  dias?: string[];
+  cor?: string;
+  periodos?: string[];
+}
 
 interface FormProps {
   onCancel: () => void;
 }
 
 export function FormCriarUCs({ onCancel }: FormProps) {
-  const [selectedUCId, setSelectedUCId] = useState(mockUCs[0].id);
-  const selectedUC = mockUCs.find((uc) => uc.id === selectedUCId) || mockUCs[0];
-  const [ucNameInput, setUcNameInput] = useState(selectedUC.nome);
+  const { data } = useMockData();
+  const ucsState: UC[] = Array.isArray(data.ucs) ? data.ucs : [];
+  const [selectedUCId, setSelectedUCId] = useState<number>(ucsState[0]?.id ?? 0);
+  const selectedUC: UC = (ucsState.find((uc: UC) => uc.id === selectedUCId) as UC) || (ucsState[0] as UC) || ({ id: 0, nome: '', turmas: [] } as UC);
+  const [ucNameInput, setUcNameInput] = useState<string>(selectedUC.nome);
 
   useEffect(() => {
     setUcNameInput(selectedUC.nome);
@@ -31,14 +43,14 @@ export function FormCriarUCs({ onCancel }: FormProps) {
             value={selectedUCId}
             onChange={(e) => setSelectedUCId(Number(e.target.value))}
           >
-            {mockUCs.map((uc) => (
+            {ucsState.map((uc: UC) => (
               <option key={uc.id} value={uc.id}>{uc.nome}</option>
             ))}
           </select>
           
           <h3>Assinado para as classes:</h3>
           <div className={styles.classesBox}>
-            {selectedUC.turmas.map((turma, index) => (
+            {selectedUC.turmas.map((turma: string, index: number) => (
               <div key={index} className={styles.pill}>
                 {turma}
               </div>
@@ -54,7 +66,7 @@ export function FormCriarUCs({ onCancel }: FormProps) {
             value={selectedUCId}
             onChange={(e) => setSelectedUCId(Number(e.target.value))}
           >
-            {mockUCs.map((uc) => (
+            {ucsState.map((uc: UC) => (
               <option key={uc.id} value={uc.id}>{uc.nome}</option>
             ))}
           </select>

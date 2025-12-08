@@ -27,6 +27,12 @@
   gap: 1.5rem;
 }
 
+.rightArea {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .dropdownInstituicao {
   display: flex;
   align-items: center;
