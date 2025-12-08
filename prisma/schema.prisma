@@ -1,0 +1,85 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Modelo de Usuário (Professor)
+model User {
+  id           Int     @id @default(autoincrement())
+  email        String  @unique
+  senha        String  // Será armazenada criptografada
+  nome         String
+  // Preferências armazenadas como JSON string ou tabelas separadas. 
+  // Para simplificar, usaremos campos booleanos:
+  prefMatutino Boolean @default(false)
+  prefVespertino Boolean @default(false)
+  prefNoturno  Boolean @default(false)
+  prefTodos    Boolean @default(false)
+  
+  unidades     UnidadeUsuario[]
+}
+
+model UnidadeUsuario {
+  id     Int    @id @default(autoincrement())
+  nome   String
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+// Modelo para UCs (Unidades Curriculares)
+model UC {
+  id       Int      @id @default(autoincrement())
+  nome     String
+  cor      String
+  turmas   Turma[]
+  salas    SalaUC[]
+  dias     DiaUC[]
+}
+
+model Turma {
+  id   Int    @id @default(autoincrement())
+  nome String
+  ucId Int
+  uc   UC     @relation(fields: [ucId], references: [id])
+}
+
+// Modelo de Salas
+model Sala {
+  id         Int      @id @default(autoincrement())
+  nome       String
+  capacidade Int
+  ucs        SalaUC[]
+}
+
+// Tabelas de relacionamento (muitos-para-muitos)
+model SalaUC {
+  ucId   Int
+  salaId Int
+  uc     UC   @relation(fields: [ucId], references: [id])
+  sala   Sala @relation(fields: [salaId], references: [id])
+
+  @@id([ucId, salaId])
+}
+
+model DiaUC {
+  id   Int    @id @default(autoincrement())
+  dia  String // "Segunda-feira", etc.
+  ucId Int
+  uc   UC     @relation(fields: [ucId], references: [id])
+}
+
+// Solicitações
+model Solicitacao {
+  id        Int      @id @default(autoincrement())
+  tipo      String   // "escala", "ucs", "salas"
+  titulo    String
+  status    String   // "pendente", "resolvido"
+  descricao String
+  criadoEm  DateTime @default(now())
+}
