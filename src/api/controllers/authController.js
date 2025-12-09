@@ -1,6 +1,8 @@
-import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import pkg from '@prisma/client';
+const { PrismaClient } = pkg;
+
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 const prisma = new PrismaClient();
 const SECRET = "SEGREDO_SUPER_SECRETO"; // em produção
